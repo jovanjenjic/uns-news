@@ -17,7 +17,7 @@ function Home({
   navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const isTablet = useMediaQuery(1023)
-  
+
   return (
     <Layout navigation={navigation}>
       {isTablet ? (

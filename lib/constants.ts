@@ -21,8 +21,7 @@ export const SEO_DESCRIPTION =
 
 export const OG_IMAGE = {
   large: {
-    url:
-      'https://res.cloudinary.com/dliiwavlg/image/upload/v1615590785/magazineog_qppjhg.jpg',
+    url: 'https://res.cloudinary.com/dliiwavlg/image/upload/v1615590785/magazineog_qppjhg.jpg',
     width: 1200,
     height: 627,
   },

@@ -30,10 +30,10 @@ const MenuWrapper = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isVisible, toggle])
 
-  const value = useMemo(() => ({ isVisible, toggle, menuWrapperRef }), [
-    isVisible,
-    toggle,
-  ])
+  const value = useMemo(
+    () => ({ isVisible, toggle, menuWrapperRef }),
+    [isVisible, toggle]
+  )
 
   return (
     <MenuContext.Provider value={value}>
