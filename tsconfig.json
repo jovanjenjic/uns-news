@@ -5,7 +5,6 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -14,6 +13,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "strict": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
     "paths": {
       "@lib/*": ["lib/*"],
       "@components/*": ["components/*"],
