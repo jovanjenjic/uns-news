@@ -28,7 +28,7 @@ function Home({
           <ArticlesHero articles={articles.slice(0, 4)} />
         )}
 
-        <ArticlesList articles={articles.slice(5, 10)} title="Najnovije" />
+        <ArticlesList articles={articles.slice(4, 10)} title="Najnovije" />
 
         <div className="lg:py-24 lg:flex lg:w-full lg:gap-28 lg:mx-auto">
           <ArticlesList
@@ -38,14 +38,14 @@ function Home({
             className="lg:w-1/2"
           />
           <ArticlesList
-            articles={articles.slice(6, 11)}
+            articles={articles.slice(5, 10)}
             title="Popularno"
             variant="top"
             className="lg:w-1/2"
           />
         </div>
 
-        <ArticlesList articles={articles.slice(10, 15)} title="Više novosti" />
+        <ArticlesList articles={articles.slice(10)} title="Više novosti" />
       </Layout>
     </div>
   )
