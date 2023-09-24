@@ -54,7 +54,7 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
   const SearchFilters = () => {
     return (
       <div className="absolute z-20 bg-secondary left-0 right-0 px-2 pt-2 pb-6 border-b">
-        <p className={s.filterHeading}>SORT BY</p>
+        <p className={s.filterHeading}>SORTIRAJ</p>
         <ul>
           <Link
             href={{
@@ -67,7 +67,7 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
                 [s.filterActive]: !sort || sort === 'asc',
               })}
             >
-              Newest
+              Novije
             </li>
           </Link>
           <Link
@@ -81,11 +81,11 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
                 [s.filterActive]: sort === 'desc',
               })}
             >
-              Oldest
+              Starije
             </li>
           </Link>
         </ul>
-        <p className={s.filterHeading}>FILTER BY</p>
+        <p className={s.filterHeading}>FILTRIRAJ</p>
         <ul>
           <Link
             href={{
@@ -98,7 +98,7 @@ const SearchInput = ({ categories }: { categories: TCategory[] }) => {
                 [s.filterActive]: !category,
               })}
             >
-              All Categories
+              Sve kategorije
             </li>
           </Link>
           {categories.map((c) => (

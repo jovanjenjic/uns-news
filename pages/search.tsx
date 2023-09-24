@@ -49,7 +49,7 @@ function SearchPage({
         <ArticlesList
           articles={sortedArticles}
           title={`${sortedArticles.length} ${
-            sortedArticles.length > 1 ? 'results' : 'result'
+            sortedArticles.length > 1 ? 'Rezultata' : 'Rezultat'
           }`}
         />
       ) : (

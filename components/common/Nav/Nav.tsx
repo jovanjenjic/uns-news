@@ -5,9 +5,11 @@ import { useHideOnScroll } from '@lib/hooks/use-hide-on-scroll'
 const Nav = ({
   list,
   isFaculty,
+  allText = 'SVI',
 }: {
   list: TCategory[]
   isFaculty: boolean
+  allText?: string
 }) => {
   const router = useRouter()
   const { isHidden } = useHideOnScroll()
@@ -59,7 +61,7 @@ const Nav = ({
             'border-b-2 border-primary'
         )}
       >
-        SVI
+        {allText}
       </button>
       {list.map((item) => (
         <button

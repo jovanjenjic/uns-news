@@ -59,7 +59,7 @@ const Header = () => {
             inputMode="search"
             name="search"
             id="search"
-            placeholder="Search..."
+            placeholder="Pretraga..."
             className="bg-transparent outline-none w-full py-2 pr-2 pl-9 search-btn-none lg:text-sm"
             onKeyUp={(e) => {
               e.preventDefault()

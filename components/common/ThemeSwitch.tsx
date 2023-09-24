@@ -22,9 +22,9 @@ const ThemeSwitch = () => {
           onChange={(e) => setTheme(e.target.value)}
           aria-label="Change theme color"
         >
-          <option value="system">System</option>
-          <option value="dark">Dark Mode</option>
-          <option value="light">Light Mode</option>
+          <option value="system">Sistemski</option>
+          <option value="dark">Tamni Mode</option>
+          <option value="light">Svetli Mode</option>
         </select>
         <span className="absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none">
           <ChevronDown width="20" height="20" />

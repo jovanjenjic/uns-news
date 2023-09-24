@@ -6,8 +6,8 @@ import ExternalLink from '@components/ui/Link/ExternalLink'
 import Image from 'next/image'
 import { Layout } from '@components/common/Layout'
 import Custom404 from 'pages/404'
-import Twitter from '@components/icons/Twitter'
 import { Markdown } from '@components/common/Markdown'
+import Web from '@components/icons/Web'
 
 export async function getStaticPaths() {
   const slugs: TFaculty[] = await fetchAPI('/faculties')
@@ -66,7 +66,7 @@ function FacultyPage({
             className="flex w-max mx-auto items-center opacity-60 hover:opacity-100 my-4"
           >
             <span className="mr-2">
-              <Twitter width="18" height="18" />
+              <Web width="18" height="18" />
             </span>
             {faculty?.url}
           </ExternalLink>

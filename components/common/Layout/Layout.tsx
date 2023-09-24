@@ -25,8 +25,8 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
   return (
     <>
       <Header />
-      {navigation && <Nav list={navigation.faculties} isFaculty={true} />}
-      {navigation && <Nav list={navigation.categories} isFaculty={false} />}
+      {navigation && <Nav list={navigation.faculties} isFaculty={true} allText="SVI FAKULTET" />}
+      {navigation && <Nav list={navigation.categories} isFaculty={false} allText="SVE KATEGORIJE" />}
 
       <main
         className={cn(

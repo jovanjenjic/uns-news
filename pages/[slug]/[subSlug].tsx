@@ -119,7 +119,7 @@ function CategoryPage({
           />
         </div>
 
-        <ArticlesList articles={articles} title="Vise novosti" />
+        <ArticlesList articles={articles} title="Više novosti" />
       </Layout>
     </div>
   )

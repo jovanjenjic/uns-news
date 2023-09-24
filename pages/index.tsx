@@ -48,7 +48,7 @@ function Home({
           />
         </div>
 
-        <ArticlesList articles={articles.slice(10, 15)} title="Vise novosti" />
+        <ArticlesList articles={articles.slice(10, 15)} title="Više novosti" />
       </Layout>
     </div>
   )
