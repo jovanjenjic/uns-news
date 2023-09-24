@@ -29,7 +29,7 @@ function Article({ article }: { article: TArticle | undefined }) {
         <h1 className="serif pb-4">{article.title}</h1>
 
         <p className="mb-2">
-          By{' '}
+          Autor{' '}
           <Link href={`/contributors/${article.author.slug}`}>
             <a className="font-bold">{article.author.name}</a>
           </Link>

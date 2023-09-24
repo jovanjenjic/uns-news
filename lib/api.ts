@@ -18,11 +18,10 @@ export const getMediaURL = (url?: string) => {
 }
 
 export async function getNavigation(): Promise<TNavigation> {
-  const [categories, pages, faculties] = await Promise.all([
+  const [categories, faculties] = await Promise.all([
     fetchAPI('/categories'),
-    fetchAPI('/pages'),
     fetchAPI('/faculties'),
   ])
 
-  return { categories, pages, faculties }
+  return { categories, faculties }
 }

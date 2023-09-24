@@ -51,15 +51,15 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
 
   return (
     <MenuWrapper>
-      <MenuButton ariaLabel="Share" onClick={onShareClick}>
+      <MenuButton ariaLabel="Podeli vest" onClick={onShareClick}>
         <Share />
       </MenuButton>
-      <Menu title="Share">
+      <Menu title="Podeli vest">
         <MenuItem
           subfix={<Facebook width={20} height={20} />}
           onClick={onFacebookShare}
         >
-          Share on Facebook
+          Podeli na Facebook
         </MenuItem>
         <MenuItem
           subfix={<Twitter width={20} height={20} />}
@@ -68,7 +68,7 @@ const ShareButton = ({ title, path, message = 'Chech this link' }: Props) => {
           }`}
           external
         >
-          Share on Twitter
+          Podeli na Twitter
         </MenuItem>
         <MenuItem unstyled>
           <button

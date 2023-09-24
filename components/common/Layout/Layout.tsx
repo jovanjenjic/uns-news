@@ -40,7 +40,6 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
       {navigation && (
         <Footer
           categories={navigation.categories}
-          pages={navigation.pages}
           faculties={navigation.faculties}
         />
       )}

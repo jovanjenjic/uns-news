@@ -54,7 +54,7 @@ const SocialUrls = () => {
       {linkedin && (
         <li className="px-4">
           <ExternalLink
-            to={`https://linkedin.com/in/${linkedin}`}
+            to={`https://linkedin.com/${linkedin}`}
             ariaLabel="Linkedin"
           >
             <Linkedin width="20" height="20" />
