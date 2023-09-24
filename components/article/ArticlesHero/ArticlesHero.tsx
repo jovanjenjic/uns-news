@@ -34,6 +34,11 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
                 {articles[0].category.title}
               </a>
             </Link>
+            <Link href={`/faculties/${articles[0].faculty.slug}`}>
+              <a className="ml-2 uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
+                {articles[0].faculty.title}
+              </a>
+            </Link>
             <Link href={`/articles/${articles[0].slug}`}>
               <a>
                 <h3

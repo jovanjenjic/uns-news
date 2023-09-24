@@ -42,6 +42,12 @@ const ArticleCardTop = ({ article, index }: Props) => {
             </a>
           </Link>
           <span className="mx-3">|</span>
+          <Link href={`/faculties/${article.faculty.slug}`}>
+            <a className="text-accent hover:underline">
+              {article.faculty.title}
+            </a>
+          </Link>
+          <span className="mx-3">|</span>
           <Date date={article.published_at as string} />
         </div>
       </section>

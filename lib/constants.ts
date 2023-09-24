@@ -8,11 +8,11 @@ export const SITE_LOGO =
   'https://res.cloudinary.com/dliiwavlg/image/upload/v1615590785/magazineog_qppjhg.jpg'
 
 export const SOCIAL_USERNAMES = {
-  twitter: 'edgarlr_',
-  instagram: 'edgar.lr',
-  facebook: 'edgarlr',
+  twitter: '',
+  instagram: '.lr',
+  facebook: '',
   youtube: null,
-  linkedin: 'edgarlr',
+  linkedin: '',
 }
 
 // Default SEO

@@ -1,4 +1,4 @@
-import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
+import { fetchAPI, getMediaURL } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { Article } from '@components/article'
@@ -40,19 +40,20 @@ export async function getStaticProps({
     )
   )[0]
 
-  const navigation: TNavigation = await getNavigation()
-
   // No props will trigger a 404
   if (!article) return { props: {} }
-  return { props: { preview, navigation, article } }
+  return { props: { preview, article } }
 }
 
 function ArticlePage({
   article,
-  navigation,
   preview,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { isFallback } = useRouter()
+  const { isFallback, back } = useRouter()
+
+  const handleGoBack = () => {
+    back()
+  }
 
   if (!isFallback && !article) {
     return <Custom404 />
@@ -61,63 +62,65 @@ function ArticlePage({
   const fullURL = `${SITE_URL}/articles/${article?.slug}`
 
   return (
-    <Layout navigation={navigation} isMarkdown>
-      <NextSeo
-        title={article?.title}
-        description={article?.description}
-        openGraph={{
-          title: article?.title,
-          description: article?.description,
-          url: fullURL,
-          type: 'article',
-          article: {
-            publishedTime: article?.published_at as string,
-            modifiedTime: article?.updated_at as string,
-            section: article?.category.title,
-            authors: [
-              `'https://www.example.com/contributors/'${article?.author.slug}`,
-            ],
-            tags: [`${article?.category.title}`],
-          },
-          // Only include OG image if exists
-          // This will break disabling Strapi Image Optimization
-          ...(article?.cover && {
-            images: Object.values(article.cover.formats).map((image) => {
-              return {
-                url: getMediaURL(image?.url),
-                width: image?.width,
-                height: image?.height,
-              }
+    <div style={{ background: article?.faculty?.bgColor }}>
+      <Layout isMarkdown>
+        <NextSeo
+          title={article?.title}
+          description={article?.description}
+          openGraph={{
+            title: article?.title,
+            description: article?.description,
+            url: fullURL,
+            type: 'article',
+            article: {
+              publishedTime: article?.published_at as string,
+              modifiedTime: article?.updated_at as string,
+              section: article?.category.title,
+              authors: [
+                `'https://www.example.com/contributors/'${article?.author.slug}`,
+              ],
+              tags: [`${article?.category.title}`],
+            },
+            // Only include OG image if exists
+            // This will break disabling Strapi Image Optimization
+            ...(article?.cover && {
+              images: Object.values(article.cover.formats).map((image) => {
+                return {
+                  url: getMediaURL(image?.url),
+                  width: image?.width,
+                  height: image?.height,
+                }
+              }),
             }),
-          }),
-        }}
-      />
-      <ArticleJsonLd
-        url={fullURL}
-        title={article?.title as string}
-        datePublished={article?.published_at as string}
-        dateModified={article?.updated_at as string}
-        authorName={[article?.author.name as string]}
-        publisherName={SITE_NAME}
-        publisherLogo={SITE_LOGO}
-        description={article?.description as string}
-        // Only include images if exists
-        // This will break disabling Strapi Image Optimization
-        images={
-          article?.cover
-            ? Object.values(article.cover.formats).map((image) => {
-                return getMediaURL(image?.url)
-              })
-            : []
-        }
-      />
+          }}
+        />
+        <ArticleJsonLd
+          url={fullURL}
+          title={article?.title as string}
+          datePublished={article?.published_at as string}
+          dateModified={article?.updated_at as string}
+          authorName={[article?.author.name as string]}
+          publisherName={SITE_NAME}
+          publisherLogo={SITE_LOGO}
+          description={article?.description as string}
+          // Only include images if exists
+          // This will break disabling Strapi Image Optimization
+          images={
+            article?.cover
+              ? Object.values(article.cover.formats).map((image) => {
+                  return getMediaURL(image?.url)
+                })
+              : []
+          }
+        />
 
-      <Button ariaLabel="Go back" href="/" className="-ml-2">
-        <ArrowLeft />
-      </Button>
-      <Article article={article} />
-      {preview && <ExitPreviewButton />}
-    </Layout>
+        <Button ariaLabel="Go back" onClick={handleGoBack} className="-ml-2">
+          <ArrowLeft />
+        </Button>
+        <Article article={article} />
+        {preview && <ExitPreviewButton />}
+      </Layout>
+    </div>
   )
 }
 

@@ -25,7 +25,8 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
   return (
     <>
       <Header />
-      {navigation && <Nav categories={navigation.categories} />}
+      {navigation && <Nav list={navigation.faculties} isFaculty={true} />}
+      {navigation && <Nav list={navigation.categories} isFaculty={false} />}
 
       <main
         className={cn(
@@ -37,7 +38,11 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
       </main>
 
       {navigation && (
-        <Footer categories={navigation.categories} pages={navigation.pages} />
+        <Footer
+          categories={navigation.categories}
+          pages={navigation.pages}
+          faculties={navigation.faculties}
+        />
       )}
     </>
   )

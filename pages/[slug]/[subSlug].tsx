@@ -9,27 +9,34 @@ import ArticlesHero from '@components/article/ArticlesHero/ArticlesHero'
 
 export async function getStaticPaths() {
   const categories: TCategory[] = await fetchAPI('/categories')
-  const faculties: TCategory[] = await fetchAPI('/faculties')
+  const faculties: TFaculty[] = await fetchAPI('/faculties')
+
+  const paths = []
+
+  categories.forEach((category) => {
+    faculties.forEach((fac) => {
+      paths.push(`/${fac.slug}/${category.slug}`)
+    })
+  })
 
   return {
-    paths: [...categories, ...faculties].map((val) => `/${val.slug}`),
+    paths,
     fallback: false,
   }
 }
 
 export async function getStaticProps({
   params,
-}: GetStaticPropsContext<{ slug: string }>) {
-  const category: TCategory =
-    (await fetchAPI(`/categories?slug=${params?.slug}`))?.[0] || {}
-  const faculty: TFaculty =
-    (await fetchAPI(`/faculties?slug=${params?.slug}`))?.[0] || {}
+}: GetStaticPropsContext<{ slug: string; subSlug: string }>) {
+  const category: TCategory = (
+    await fetchAPI(`/categories?slug=${params?.subSlug}`)
+  )[0]
+  const faculty: TFaculty = (
+    await fetchAPI(`/faculties?slug=${params?.slug}`)
+  )[0]
 
-  const articlesByCategory: TArticle[] = await fetchAPI(
-    `/articles?category.slug=${params?.slug}`
-  )
-  const articlesByFaculty: TArticle[] = await fetchAPI(
-    `/articles?faculty.slug=${params?.slug}`
+  const articles: TArticle[] = await fetchAPI(
+    `/articles?category.slug=${params?.subSlug}&faculty.slug=${params?.slug}`
   )
   const navigation: TNavigation = await getNavigation()
 
@@ -38,16 +45,16 @@ export async function getStaticProps({
       category,
       faculty,
       navigation,
-      articles: [...articlesByCategory, ...articlesByFaculty],
+      articles,
     },
   }
 }
 
 function CategoryPage({
   category,
-  faculty,
   articles,
   navigation,
+  faculty,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const isTablet = useMediaQuery(1023)
 
@@ -55,7 +62,7 @@ function CategoryPage({
     return (
       <div style={{ background: faculty.bgColor || 'white' }}>
         <Layout navigation={navigation}>
-          <Hero title={category.title || faculty.title} />
+          <Hero title={`${faculty.title} / ${category.title}`} />
           <div className="text-center my-auto">
             <p>There are no articles to show yet.</p>
           </div>
@@ -67,11 +74,11 @@ function CategoryPage({
   return (
     <div style={{ background: faculty.bgColor || 'white' }}>
       <NextSeo
-        title={category.title || faculty.title}
+        title={category.title}
         description={category.description}
         openGraph={{
-          title: category.title || faculty.title,
-          description: category.description || faculty.description,
+          title: category.title,
+          description: category.description,
           // Only include OG image if exists
           // This will break disabling Strapi Image Optimization
           ...(category.cover && {
@@ -87,7 +94,7 @@ function CategoryPage({
       />
 
       <Layout navigation={navigation}>
-        <Hero title={category.title || faculty.title} />
+        <Hero title={`${faculty.title} / ${category.title}`} />
         {isTablet ? (
           //Tablet and smaller devices
           <ArticlesCarousel title="Top stories" articles={articles} />
