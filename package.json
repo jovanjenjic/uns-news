@@ -1,18 +1,10 @@
 {
-  "name": "magazine",
+  "name": "uns-portal",
   "version": "0.1.0",
-  "description": "Next.js online magazine starter kit",
+  "description": "Next.js uns e-portal",
   "main": "index.js",
-  "author": "edgarlr",
+  "author": "jovan.jenjic",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/edgarlr/magazine.git"
-  },
-  "bugs": {
-    "url": "https://github.com/edgarlr/magazine/issues"
-  },
-  "homepage": "https://github.com/edgarlr/magazine#readme",
   "scripts": {
     "dev": "next dev",
     "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
