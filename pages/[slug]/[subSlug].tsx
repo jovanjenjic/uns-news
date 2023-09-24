@@ -36,7 +36,7 @@ export async function getStaticProps({
   )[0]
 
   const articles: TArticle[] = await fetchAPI(
-    `/articles?category.slug=${params?.subSlug}&faculty.slug=${params?.slug}`
+    `/articles?categories.slug=${params?.subSlug}&faculties.slug=${params?.slug}`
   )
   const navigation: TNavigation = await getNavigation()
 
@@ -97,7 +97,7 @@ function CategoryPage({
         <Hero title={`${faculty.title} / ${category.title}`} />
         {isTablet ? (
           //Tablet and smaller devices
-          <ArticlesCarousel title="Top stories" articles={articles} />
+          <ArticlesCarousel title="Top vesti" articles={articles} />
         ) : (
           <ArticlesHero articles={articles} />
         )}

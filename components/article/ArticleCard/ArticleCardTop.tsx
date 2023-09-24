@@ -35,19 +35,23 @@ const ArticleCardTop = ({ article, index }: Props) => {
               </a>
             </Link>
           </p>
-          <span className="mx-3">|</span>
-          <Link href={`/${article.category.slug}`}>
-            <a className="text-accent hover:underline">
-              {article.category.title}
-            </a>
-          </Link>
-          <span className="mx-3">|</span>
-          <Link href={`/faculties/${article.faculty.slug}`}>
-            <a className="text-accent hover:underline">
-              {article.faculty.title}
-            </a>
-          </Link>
-          <span className="mx-3">|</span>
+          <span className="mx-3 text-accent">|</span>
+          {article.categories.map((category) => (
+            <>
+              <Link href={`/${category.slug}`}>
+                <a className="text-accent hover:underline">{category.title}</a>
+              </Link>
+              <span className="mx-3 text-accent">|</span>
+            </>
+          ))}
+          {article.faculties.map((fax) => (
+            <>
+              <Link href={`/faculties/${fax.slug}`}>
+                <a className="text-accent hover:underline">{fax.title}</a>
+              </Link>
+              <span className="mx-3 text-accent">|</span>
+            </>
+          ))}
           <Date date={article.published_at as string} />
         </div>
       </section>

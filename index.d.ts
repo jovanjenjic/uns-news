@@ -14,8 +14,8 @@ type TArticle = {
   slug: string
   author: TContributor
   content: string
-  category: TCategory
-  faculty: TFaculty
+  categories: TCategory[]
+  faculties: TFaculty[]
   description: string
   published_at: Date | string
   created_at: Date | string

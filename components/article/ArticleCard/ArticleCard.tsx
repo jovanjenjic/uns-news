@@ -32,19 +32,29 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
       </Link>
 
       <section className="pt-4">
-        <Link href={`/${article.category.slug}`}>
-          <a className="uppercase text-sm font-bold text-accent hover:underline">
-            {article.category.title}
-          </a>
-        </Link>
+        {article.categories.map((category) => (
+          <>
+            <Link href={`/${category.slug}`}>
+              <a className="uppercase text-sm font-bold text-accent hover:underline">
+                {category.title}
+              </a>
+            </Link>
+            <span className="mx-3 text-accent">|</span>
+          </>
+        ))}
+        {article.faculties.map((fax, index) => (
+          <>
+            <Link href={`/faculties/${fax.slug}`}>
+              <a className="uppercase text-sm font-bold text-accent hover:underline">
+                {fax.title}
+              </a>
+            </Link>
+            {index !== article.faculties.length - 1 && (
+              <span className="mx-3 text-accent">|</span>
+            )}
+          </>
+        ))}
 
-        <span className="mx-3 text-accent">|</span>
-
-        <Link href={`/faculties/${article.faculty.slug}`}>
-          <a className="uppercase text-sm font-bold text-accent hover:underline">
-            {article.faculty.title}
-          </a>
-        </Link>
         <Link href={`/articles/${article.slug}`}>
           <a>
             <h3

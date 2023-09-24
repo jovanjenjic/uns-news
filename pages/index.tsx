@@ -23,10 +23,7 @@ function Home({
       <Layout navigation={navigation}>
         {isTablet ? (
           //Tablet and smaller devices
-          <ArticlesCarousel
-            title="Top stories"
-            articles={articles.slice(0, 4)}
-          />
+          <ArticlesCarousel title="Top vesti" articles={articles.slice(0, 4)} />
         ) : (
           <ArticlesHero articles={articles.slice(0, 4)} />
         )}

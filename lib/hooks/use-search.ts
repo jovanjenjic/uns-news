@@ -23,7 +23,7 @@ export const useSearch = <T>(
         query.q as string
       )}`
       if (query.category) {
-        url = `${url}&category.slug=${query.category}`
+        url = `${url}&categories.slug=${query.category}`
       }
       if (query.sort) {
         url = `${url}&_sort=published_at:${query.sort}`

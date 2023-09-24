@@ -23,8 +23,8 @@ const ThemeSwitch = () => {
           aria-label="Change theme color"
         >
           <option value="system">Sistemski</option>
-          <option value="dark">Tamni Mode</option>
-          <option value="light">Svetli Mode</option>
+          <option value="dark">Tamni mod</option>
+          <option value="light">Svetli mod</option>
         </select>
         <span className="absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none">
           <ChevronDown width="20" height="20" />
