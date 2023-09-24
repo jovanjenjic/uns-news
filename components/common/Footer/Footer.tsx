@@ -2,10 +2,11 @@ import Link from 'next/link'
 import SocialUrls from './SocialUrls'
 import ThemeSwitch from '../ThemeSwitch'
 import s from './Footer.module.css'
-import ExternalLink from '@components/ui/Link/ExternalLink'
-import Github from '@components/icons/Github'
+import { SOCIAL_USERNAMES } from '@lib/constants'
 
-const Footer = ({ categories, pages, faculties }: TNavigation) => {
+const Footer = ({ categories, faculties }: TNavigation) => {
+  const { instagram } = SOCIAL_USERNAMES
+
   return (
     <footer className="block bottom-0 left-0 right-0 bg-primary-05 px-6 py-6 md:px-32 lg:px-48 xl:px-1/5">
       <nav
@@ -13,7 +14,7 @@ const Footer = ({ categories, pages, faculties }: TNavigation) => {
         aria-label="Footer Nav"
       >
         <div>
-          <h3 className={s.heading}>Sections</h3>
+          <h3 className={s.heading}>Kategorije</h3>
           <ul className={s.ul}>
             {categories.map((category) => (
               <li key={category.slug}>
@@ -26,7 +27,7 @@ const Footer = ({ categories, pages, faculties }: TNavigation) => {
         </div>
 
         <div>
-          <h3 className={s.heading}>Faculties</h3>
+          <h3 className={s.heading}>Fakulteti</h3>
           <ul className={s.ul}>
             {faculties.map((fax) => (
               <li key={fax.slug}>
@@ -39,32 +40,19 @@ const Footer = ({ categories, pages, faculties }: TNavigation) => {
         </div>
 
         <div>
-          <h3 className={s.heading}>About</h3>
+          <h3 className={s.heading}>O nama</h3>
           <ul className={s.ul}>
             <li>
               <Link href="/contributors">
-                <a className={s.link}>Contributors</a>
+                <a className={s.link}>Autori</a>
               </Link>
             </li>
 
             <li>
-              <Link href="/contributors">
-                <a className={s.link}>Contact</a>
+              <Link href={`https://instagram.com/${instagram}`}>
+                <a className={s.link}>Kontakt</a>
               </Link>
             </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className={s.heading}>Other</h3>
-          <ul className={s.ul}>
-            {pages.map((page) => (
-              <li key={page.slug}>
-                <Link href={`/pages/${page.slug}`}>
-                  <a className={s.link}>{page.title}</a>
-                </Link>
-              </li>
-            ))}
           </ul>
         </div>
       </nav>
@@ -72,17 +60,6 @@ const Footer = ({ categories, pages, faculties }: TNavigation) => {
       <SocialUrls />
 
       <ThemeSwitch />
-
-      <ExternalLink
-        to="https://github.com/edgarlr/magazine"
-        ariaLabel="Link to source coude"
-        className="mx-auto flex items-center w-max pt-4 py-2 opacity-80 hover:opacity-100 text-sm"
-      >
-        <span className="mr-2">
-          <Github width="16" height="16" />
-        </span>
-        Source
-      </ExternalLink>
     </footer>
   )
 }

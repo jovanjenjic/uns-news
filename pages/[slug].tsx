@@ -57,7 +57,7 @@ function CategoryPage({
         <Layout navigation={navigation}>
           <Hero title={category.title || faculty.title} />
           <div className="text-center my-auto">
-            <p>There are no articles to show yet.</p>
+            <p>Ne postoje vesti.</p>
           </div>
         </Layout>
       </div>

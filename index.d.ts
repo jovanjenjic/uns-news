@@ -1,6 +1,5 @@
 type TNavigation = {
   categories: TCategory[]
-  pages: TPage[]
   faculties: TFaculty[]
 }
 
