@@ -12,6 +12,8 @@ import { SITE_URL } from '@lib/constants'
 import Linkedin from '@components/icons/Linkedin'
 import Facebook from '@components/icons/Facebook'
 import Instagram from '@components/icons/Instagram'
+import { Button } from '@components/ui/Button'
+import ArrowLeft from '@components/icons/ArrowLeft'
 
 export async function getStaticPaths() {
   const slugs: TContributor[] = await fetchAPI('/contributors')
@@ -50,7 +52,11 @@ function ContributorPage({
   contributor,
   articles,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { isFallback } = useRouter()
+  const { isFallback, back } = useRouter()
+
+  const handleGoBack = () => {
+    back()
+  }
 
   if (!isFallback && !contributor) {
     return <Custom404 />
@@ -100,6 +106,9 @@ function ContributorPage({
         ]}
       />
 
+      <Button ariaLabel="Go back" onClick={handleGoBack} className="-ml-2">
+        <ArrowLeft />
+      </Button>
       <section className="text-center py-4">
         {isFeatured && (
           <figure className="relative w-24 h-24 mx-auto my-6">

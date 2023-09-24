@@ -28,7 +28,9 @@ function SearchPage({
     if (category) {
       return (
         a.title.toLowerCase().includes(stringQuery) &&
-        a.category.slug === decodeURIComponent(category as string)
+        a.categories
+          .map((cat) => cat.slug)
+          .includes(decodeURIComponent(category as string))
       )
     }
     return a.title.toLowerCase().includes(stringQuery)

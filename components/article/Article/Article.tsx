@@ -12,19 +12,29 @@ function Article({ article }: { article: TArticle | undefined }) {
   return (
     <article>
       <header className="py-10">
-        <Link href={`/${article.category.slug}`}>
-          <a className="uppercase text-sm font-bold text-accent">
-            {article.category.title}
-          </a>
-        </Link>
+        {article.categories.map((category) => (
+          <>
+            <Link href={`/${category.slug}`}>
+              <a className="uppercase text-sm font-bold text-accent">
+                {category.title}
+              </a>
+            </Link>
+            <span className="mx-3 text-accent">|</span>
+          </>
+        ))}
 
-        <span className="mx-3 text-accent">|</span>
-
-        <Link href={`/faculties/${article.faculty.slug}`}>
-          <a className="uppercase text-sm font-bold text-accent">
-            {article.faculty.title}
-          </a>
-        </Link>
+        {article.faculties.map((fax, index) => (
+          <>
+            <Link href={`/faculties/${fax.slug}`}>
+              <a className="uppercase text-sm font-bold text-accent">
+                {fax.title}
+              </a>
+            </Link>
+            {index !== article.faculties.length - 1 && (
+              <span className="mx-3 text-accent">|</span>
+            )}
+          </>
+        ))}
 
         <h1 className="serif pb-4">{article.title}</h1>
 

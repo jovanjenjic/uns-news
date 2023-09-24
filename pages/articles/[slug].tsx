@@ -75,11 +75,11 @@ function ArticlePage({
             article: {
               publishedTime: article?.published_at as string,
               modifiedTime: article?.updated_at as string,
-              section: article?.category.title,
+              section: `${article?.categories.map((cat) => cat.title)}`,
               authors: [
                 `'https://www.example.com/contributors/'${article?.author.slug}`,
               ],
-              tags: [`${article?.category.title}`],
+              tags: [`${article?.categories.map((cat) => cat.title)}`],
             },
             // Only include OG image if exists
             // This will break disabling Strapi Image Optimization

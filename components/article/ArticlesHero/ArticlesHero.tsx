@@ -29,16 +29,28 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
           </Link>
 
           <section className="pt-8">
-            <Link href={`/${articles[0].category.slug}`}>
-              <a className="uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
-                {articles[0].category.title}
-              </a>
-            </Link>
-            <Link href={`/faculties/${articles[0].faculty.slug}`}>
-              <a className="ml-2 uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
-                {articles[0].faculty.title}
-              </a>
-            </Link>
+            {articles[0].categories.map((category) => (
+              <>
+                <Link href={`/${category.slug}`}>
+                  <a className="uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
+                    {category.title}
+                  </a>
+                </Link>
+                <span className="mx-3 text-accent">|</span>
+              </>
+            ))}
+            {articles[0].faculties.map((fax, index) => (
+              <>
+                <Link href={`/faculties/${fax.slug}`}>
+                  <a className="uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
+                    {fax.title}
+                  </a>
+                </Link>
+                {index !== articles[0].faculties.length - 1 && (
+                  <span className="mx-3 text-accent">|</span>
+                )}
+              </>
+            ))}
             <Link href={`/articles/${articles[0].slug}`}>
               <a>
                 <h3

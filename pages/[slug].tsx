@@ -26,10 +26,10 @@ export async function getStaticProps({
     (await fetchAPI(`/faculties?slug=${params?.slug}`))?.[0] || {}
 
   const articlesByCategory: TArticle[] = await fetchAPI(
-    `/articles?category.slug=${params?.slug}`
+    `/articles?categories.slug=${params?.slug}`
   )
   const articlesByFaculty: TArticle[] = await fetchAPI(
-    `/articles?faculty.slug=${params?.slug}`
+    `/articles?faculties.slug=${params?.slug}`
   )
   const navigation: TNavigation = await getNavigation()
 
@@ -90,7 +90,7 @@ function CategoryPage({
         <Hero title={category.title || faculty.title} />
         {isTablet ? (
           //Tablet and smaller devices
-          <ArticlesCarousel title="Top stories" articles={articles} />
+          <ArticlesCarousel title="Top" articles={articles} />
         ) : (
           <ArticlesHero articles={articles} />
         )}

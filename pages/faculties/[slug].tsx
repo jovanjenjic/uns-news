@@ -8,6 +8,8 @@ import { Layout } from '@components/common/Layout'
 import Custom404 from 'pages/404'
 import { Markdown } from '@components/common/Markdown'
 import Web from '@components/icons/Web'
+import { Button } from '@components/ui/Button'
+import ArrowLeft from '@components/icons/ArrowLeft'
 
 export async function getStaticPaths() {
   const slugs: TFaculty[] = await fetchAPI('/faculties')
@@ -26,7 +28,7 @@ export async function getStaticProps({
   )[0]
 
   const articles: TArticle[] = await fetchAPI(
-    `/articles?faculty.slug=${params?.slug}`
+    `/articles?faculties.slug=${params?.slug}`
   )
 
   // No props will trigger a 404
@@ -38,7 +40,11 @@ function FacultyPage({
   faculty,
   articles,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { isFallback } = useRouter()
+  const { isFallback, back } = useRouter()
+
+  const handleGoBack = () => {
+    back()
+  }
 
   if (!isFallback && !faculty) {
     return <Custom404 />
@@ -47,6 +53,9 @@ function FacultyPage({
   return (
     <div>
       <Layout>
+        <Button ariaLabel="Go back" onClick={handleGoBack} className="-ml-2">
+          <ArrowLeft />
+        </Button>
         <section className="text-center py-4">
           <figure className="relative w-full h-96 mx-auto mb-6">
             <Image
@@ -68,7 +77,7 @@ function FacultyPage({
             <span className="mr-2">
               <Web width="18" height="18" />
             </span>
-            {faculty?.url}
+            <p className="w-min">{faculty?.url}</p>
           </ExternalLink>
         </section>
         <Markdown content={faculty.description} />
