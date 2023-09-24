@@ -37,8 +37,7 @@ const Header = () => {
   return (
     <header
       ref={searchRef}
-      style={{ background: 'inherit' }}
-      className="bg-inherit fixed h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
+      className="bg-secondary fixed h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
     >
       <Button href="/lists" ariaLabel="My bookmarks">
         <Bookmark />

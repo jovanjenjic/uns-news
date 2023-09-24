@@ -42,12 +42,11 @@ const Nav = ({
     <nav
       aria-label="Categories Nav"
       className={cn(
-        'overflow-x-scroll sticky flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
+        'bg-secondary overflow-x-scroll sticky flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
         'md:justify-center',
         isFaculty ? 'top-14' : 'top-90px',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
-      style={{ background: 'inherit' }}
     >
       <button
         onClick={() => navigateOnNewPage('')}

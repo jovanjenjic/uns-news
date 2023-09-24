@@ -60,7 +60,7 @@ function CategoryPage({
 
   if (articles.length === 0) {
     return (
-      <div style={{ background: faculty.bgColor || 'white' }}>
+      <div>
         <Layout navigation={navigation}>
           <Hero title={`${faculty.title} / ${category.title}`} />
           <div className="text-center my-auto">
@@ -72,7 +72,7 @@ function CategoryPage({
   }
 
   return (
-    <div style={{ background: faculty.bgColor || 'white' }}>
+    <div>
       <NextSeo
         title={category.title}
         description={category.description}

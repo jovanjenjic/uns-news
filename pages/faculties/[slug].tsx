@@ -45,7 +45,7 @@ function FacultyPage({
   }
 
   return (
-    <div style={{ background: faculty.bgColor }}>
+    <div>
       <Layout>
         <section className="text-center py-4">
           <figure className="relative w-full h-96 mx-auto mb-6">

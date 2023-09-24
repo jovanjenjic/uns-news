@@ -19,7 +19,7 @@ function Home({
   const isTablet = useMediaQuery(1023)
 
   return (
-    <div style={{ background: 'white' }}>
+    <div>
       <Layout navigation={navigation}>
         {isTablet ? (
           //Tablet and smaller devices

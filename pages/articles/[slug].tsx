@@ -62,7 +62,7 @@ function ArticlePage({
   const fullURL = `${SITE_URL}/articles/${article?.slug}`
 
   return (
-    <div style={{ background: article?.faculty?.bgColor }}>
+    <div>
       <Layout isMarkdown>
         <NextSeo
           title={article?.title}
