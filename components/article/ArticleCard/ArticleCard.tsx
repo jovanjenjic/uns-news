@@ -37,6 +37,14 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
             {article.category.title}
           </a>
         </Link>
+
+        <span className="mx-3 text-accent">|</span>
+
+        <Link href={`/faculties/${article.faculty.slug}`}>
+          <a className="uppercase text-sm font-bold text-accent hover:underline">
+            {article.faculty.title}
+          </a>
+        </Link>
         <Link href={`/articles/${article.slug}`}>
           <a>
             <h3

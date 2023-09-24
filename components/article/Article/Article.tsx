@@ -18,6 +18,14 @@ function Article({ article }: { article: TArticle | undefined }) {
           </a>
         </Link>
 
+        <span className="mx-3 text-accent">|</span>
+
+        <Link href={`/faculties/${article.faculty.slug}`}>
+          <a className="uppercase text-sm font-bold text-accent">
+            {article.faculty.title}
+          </a>
+        </Link>
+
         <h1 className="serif pb-4">{article.title}</h1>
 
         <p className="mb-2">

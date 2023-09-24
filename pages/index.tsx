@@ -19,33 +19,38 @@ function Home({
   const isTablet = useMediaQuery(1023)
 
   return (
-    <Layout navigation={navigation}>
-      {isTablet ? (
-        //Tablet and smaller devices
-        <ArticlesCarousel title="Top stories" articles={articles.slice(0, 4)} />
-      ) : (
-        <ArticlesHero articles={articles.slice(0, 4)} />
-      )}
+    <div style={{ background: 'white' }}>
+      <Layout navigation={navigation}>
+        {isTablet ? (
+          //Tablet and smaller devices
+          <ArticlesCarousel
+            title="Top stories"
+            articles={articles.slice(0, 4)}
+          />
+        ) : (
+          <ArticlesHero articles={articles.slice(0, 4)} />
+        )}
 
-      <ArticlesList articles={articles.slice(5, 10)} title="Najnovije" />
+        <ArticlesList articles={articles.slice(5, 10)} title="Najnovije" />
 
-      <div className="lg:py-24 lg:flex lg:w-full lg:gap-28 lg:mx-auto">
-        <ArticlesList
-          articles={articles.slice(0, 5)}
-          title="Istaknuto"
-          variant="top"
-          className="lg:w-1/2"
-        />
-        <ArticlesList
-          articles={articles.slice(6, 11)}
-          title="Popularno"
-          variant="top"
-          className="lg:w-1/2"
-        />
-      </div>
+        <div className="lg:py-24 lg:flex lg:w-full lg:gap-28 lg:mx-auto">
+          <ArticlesList
+            articles={articles.slice(0, 5)}
+            title="Istaknuto"
+            variant="top"
+            className="lg:w-1/2"
+          />
+          <ArticlesList
+            articles={articles.slice(6, 11)}
+            title="Popularno"
+            variant="top"
+            className="lg:w-1/2"
+          />
+        </div>
 
-      <ArticlesList articles={articles.slice(10, 15)} title="Vise novosti" />
-    </Layout>
+        <ArticlesList articles={articles.slice(10, 15)} title="Vise novosti" />
+      </Layout>
+    </div>
   )
 }
 

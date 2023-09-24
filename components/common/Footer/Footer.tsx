@@ -5,7 +5,7 @@ import s from './Footer.module.css'
 import ExternalLink from '@components/ui/Link/ExternalLink'
 import Github from '@components/icons/Github'
 
-const Footer = ({ categories, pages }: TNavigation) => {
+const Footer = ({ categories, pages, faculties }: TNavigation) => {
   return (
     <footer className="block bottom-0 left-0 right-0 bg-primary-05 px-6 py-6 md:px-32 lg:px-48 xl:px-1/5">
       <nav
@@ -19,6 +19,19 @@ const Footer = ({ categories, pages }: TNavigation) => {
               <li key={category.slug}>
                 <Link href={`/${category.slug}`}>
                   <a className={s.link}>{category.title}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className={s.heading}>Faculties</h3>
+          <ul className={s.ul}>
+            {faculties.map((fax) => (
+              <li key={fax.slug}>
+                <Link href={`/faculties/${fax.slug}`}>
+                  <a className={s.link}>{fax.title}</a>
                 </Link>
               </li>
             ))}

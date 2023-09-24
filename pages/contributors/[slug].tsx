@@ -9,6 +9,9 @@ import Custom404 from 'pages/404'
 import Twitter from '@components/icons/Twitter'
 import { BreadcrumbJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { SITE_URL } from '@lib/constants'
+import Linkedin from '@components/icons/Linkedin'
+import Facebook from '@components/icons/Facebook'
+import Instagram from '@components/icons/Instagram'
 
 export async function getStaticPaths() {
   const slugs: TContributor[] = await fetchAPI('/contributors')
@@ -66,10 +69,10 @@ function ContributorPage({
     const { facebook, twitter, instagram, linkedin } = urls
 
     return [
-      facebook && `https://www.facebook.com/${facebook}`,
-      instagram && `https://instagram.com/${instagram}`,
-      linkedin && `https://www.linkedin.com/in/${linkedin}`,
-      twitter && `https://twitter.com/${twitter}`,
+      facebook && `${facebook}`,
+      instagram && `${instagram}`,
+      linkedin && `${linkedin}`,
+      twitter && `${twitter}`,
     ].filter((elem) => elem !== null)
   }
 
@@ -114,7 +117,7 @@ function ContributorPage({
         </p>
         {contributor?.urls?.twitter && (
           <ExternalLink
-            to={`https://twitter.com/${contributor?.urls.twitter}`}
+            to={`${contributor.urls.twitter}`}
             ariaLabel="Contributor's twitter"
             className="flex w-max mx-auto items-center opacity-60 hover:opacity-100"
           >
@@ -122,6 +125,42 @@ function ContributorPage({
               <Twitter width="18" height="18" />
             </span>
             {contributor?.urls.twitter}
+          </ExternalLink>
+        )}
+        {contributor?.urls?.linkedin && (
+          <ExternalLink
+            to={`${contributor.urls.linkedin}`}
+            ariaLabel="Contributor's linkedin"
+            className="flex w-max mx-auto items-center opacity-60 hover:opacity-100"
+          >
+            <span className="mr-2">
+              <Linkedin width="18" height="18" />
+            </span>
+            {contributor?.urls.linkedin}
+          </ExternalLink>
+        )}
+        {contributor?.urls?.facebook && (
+          <ExternalLink
+            to={`${contributor?.urls.facebook}`}
+            ariaLabel="Contributor's facebook"
+            className="flex w-max mx-auto items-center opacity-60 hover:opacity-100"
+          >
+            <span className="mr-2">
+              <Facebook width="18" height="18" />
+            </span>
+            {contributor?.urls.facebook}
+          </ExternalLink>
+        )}
+        {contributor?.urls?.instagram && (
+          <ExternalLink
+            to={`${contributor?.urls.instagram}`}
+            ariaLabel="Contributor's instagram"
+            className="flex w-max mx-auto items-center opacity-60 hover:opacity-100"
+          >
+            <span className="mr-2">
+              <Instagram width="18" height="18" />
+            </span>
+            {contributor?.urls.instagram}
           </ExternalLink>
         )}
         {isFeatured && (

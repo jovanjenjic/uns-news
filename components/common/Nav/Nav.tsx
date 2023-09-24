@@ -1,41 +1,79 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 import { useHideOnScroll } from '@lib/hooks/use-hide-on-scroll'
 
-const Nav = ({ categories }: { categories: TCategory[] }) => {
+const Nav = ({
+  list,
+  isFaculty,
+}: {
+  list: TCategory[]
+  isFaculty: boolean
+}) => {
   const router = useRouter()
   const { isHidden } = useHideOnScroll()
+  const { slug, subSlug } = router.query
+
+  const findElementInCurrentList = (slugOrSubSlug: string): boolean => {
+    return !!list.map((item) => item.slug).find((val) => val === slugOrSubSlug)
+  }
+
+  const navigateOnNewPage = (val: string): void => {
+    let url = ''
+
+    if (isFaculty) {
+      url = subSlug
+        ? val
+          ? `${val}/${subSlug}`
+          : `${subSlug}`
+        : !findElementInCurrentList(slug as string)
+        ? `${val}/${slug || ''}`
+        : val
+    } else {
+      url =
+        !findElementInCurrentList(slug as string) && slug
+          ? `${slug}/${val}`
+          : val
+    }
+
+    router.push(`/${url}`)
+  }
+
   return (
     <nav
       aria-label="Categories Nav"
       className={cn(
-        'overflow-x-scroll sticky flex whitespace-nowrap px-4 top-14 z-10 bg-secondary scrollbar-none transform transition-transform duration-300',
+        'overflow-x-scroll sticky flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
         'md:justify-center',
+        isFaculty ? 'top-14' : 'top-90px',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
+      style={{ background: 'inherit' }}
     >
-      <Link href={`/`}>
-        <a
+      <button
+        onClick={() => navigateOnNewPage('')}
+        className={cn(
+          'uppercase px-6 py-2 text-xs font-bold text-primary-90',
+          (isFaculty
+            ? !findElementInCurrentList(slug as string)
+            : !findElementInCurrentList(slug as string) &&
+              !findElementInCurrentList(subSlug as string)) &&
+            'border-b-2 border-primary'
+        )}
+      >
+        SVI
+      </button>
+      {list.map((item) => (
+        <button
+          onClick={() => navigateOnNewPage(item.slug)}
+          key={item.slug}
           className={cn(
-            'uppercase px-6 py-2 text-xs font-bold text-primary-90',
-            router.pathname === '/' && 'border-b-2 border-primary'
+            'uppercase py-2 px-4 text-xs font-bold text-primary-90',
+            (slug === item.slug || subSlug === item.slug) &&
+              'border-b-2 border-primary'
           )}
         >
-          POCETNA
-        </a>
-      </Link>
-      {categories.map((category) => (
-        <Link href={`/${category.slug}`} key={category.slug}>
-          <a
-            className={cn(
-              'uppercase py-2 px-4 text-xs font-bold text-primary-90',
-              router.query.slug === category.slug && 'border-b-2 border-primary'
-            )}
-          >
-            {category.title}
-          </a>
-        </Link>
+          {item.title}
+        </button>
       ))}
     </nav>
   )

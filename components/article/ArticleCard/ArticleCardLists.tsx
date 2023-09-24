@@ -28,6 +28,14 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
             {article.category.title}
           </a>
         </Link>
+
+        <span className="mx-3 text-accent">|</span>
+
+        <Link href={`/faculties/${article.faculty.slug}`}>
+          <a className="uppercase text-sm font-bold text-accent hover:underline">
+            {article.faculty.title}
+          </a>
+        </Link>
         <Link href={`/lists/${article.slug}`}>
           <a>
             <h3
