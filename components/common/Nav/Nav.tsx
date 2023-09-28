@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import cn from 'classnames'
 import { useHideOnScroll } from '@lib/hooks/use-hide-on-scroll'
+import Link from 'next/link'
 
 const Nav = ({
   list,
@@ -19,7 +20,7 @@ const Nav = ({
     return !!list?.map((item) => item.slug).find((val) => val === slugOrSubSlug)
   }
 
-  const navigateOnNewPage = (val: string): void => {
+  const navigateOnNewPage = (val: string): string => {
     let url = ''
 
     if (isFaculty) {
@@ -37,7 +38,7 @@ const Nav = ({
           : val
     }
 
-    router.push(`/${url}`)
+    return `/${url}`
   }
 
   return (
@@ -50,31 +51,32 @@ const Nav = ({
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
-      <button
-        onClick={() => navigateOnNewPage('')}
-        className={cn(
-          'uppercase px-6 py-2 text-xs font-bold text-primary-90',
-          (isFaculty
-            ? !findElementInCurrentList(slug as string)
-            : !findElementInCurrentList(slug as string) &&
-              !findElementInCurrentList(subSlug as string)) &&
-            'border-b-2 border-primary'
-        )}
-      >
-        {allText}
-      </button>
-      {list?.map((item) => (
-        <button
-          onClick={() => navigateOnNewPage(item.slug)}
-          key={item.slug}
+      <Link href={navigateOnNewPage('')}>
+        <p
           className={cn(
-            'uppercase py-2 px-4 text-xs font-bold text-primary-90',
-            (slug === item.slug || subSlug === item.slug) &&
+            'cursor-pointer uppercase px-6 py-2 text-xs font-bold text-primary-90',
+            (isFaculty
+              ? !findElementInCurrentList(slug as string)
+              : !findElementInCurrentList(slug as string) &&
+                !findElementInCurrentList(subSlug as string)) &&
               'border-b-2 border-primary'
           )}
         >
-          {item.title}
-        </button>
+          {allText}
+        </p>
+      </Link>
+      {list?.map((item) => (
+        <Link href={navigateOnNewPage(item.slug)} key={item.slug}>
+          <p
+            className={cn(
+              'cursor-pointer uppercase py-2 px-4 text-xs font-bold text-primary-90',
+              (slug === item.slug || subSlug === item.slug) &&
+                'border-b-2 border-primary'
+            )}
+          >
+            {item.title}
+          </p>
+        </Link>
       ))}
     </nav>
   )
