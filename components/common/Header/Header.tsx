@@ -43,7 +43,7 @@ const Header = () => {
         <Bookmark />
       </Button>
       <Link href="/">
-        <a className="serif text-2xl">UNS PORTAL</a>
+        <a className="serif text-2xl">УНС ПОРТАЛ</a>
       </Link>
       <Button onClick={() => setShowSearch(true)} ariaLabel="Search">
         {showSearch ? <Close /> : <Search />}
@@ -59,7 +59,7 @@ const Header = () => {
             inputMode="search"
             name="search"
             id="search"
-            placeholder="Pretraga..."
+            placeholder="Претрага..."
             className="bg-transparent outline-none w-full py-2 pr-2 pl-9 search-btn-none lg:text-sm"
             onKeyUp={(e) => {
               e.preventDefault()

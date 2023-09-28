@@ -23,29 +23,29 @@ function Home({
       <Layout navigation={navigation}>
         {isTablet ? (
           //Tablet and smaller devices
-          <ArticlesCarousel title="Top vesti" articles={articles.slice(0, 4)} />
+          <ArticlesCarousel title="Топ вести" articles={articles.slice(0, 4)} />
         ) : (
           <ArticlesHero articles={articles.slice(0, 4)} />
         )}
 
-        <ArticlesList articles={articles.slice(4, 10)} title="Najnovije" />
+        <ArticlesList articles={articles.slice(4, 10)} title="НАЈНОВИЈЕ" />
 
         <div className="lg:py-24 lg:flex lg:w-full lg:gap-28 lg:mx-auto">
           <ArticlesList
             articles={articles.slice(0, 5)}
-            title="Istaknuto"
+            title="ИСТАКНУТО"
             variant="top"
             className="lg:w-1/2"
           />
           <ArticlesList
             articles={articles.slice(5, 10)}
-            title="Popularno"
+            title="Популарно"
             variant="top"
             className="lg:w-1/2"
           />
         </div>
 
-        <ArticlesList articles={articles.slice(10)} title="Više novosti" />
+        <ArticlesList articles={articles.slice(10)} title="ВИШЕ НОВОСТИ" />
       </Layout>
     </div>
   )

@@ -3,9 +3,20 @@ import SocialUrls from './SocialUrls'
 import ThemeSwitch from '../ThemeSwitch'
 import s from './Footer.module.css'
 import { SOCIAL_USERNAMES } from '@lib/constants'
+import { getNavigation } from '@lib/api'
+import React from 'react'
 
-const Footer = ({ categories, faculties }: TNavigation) => {
-  const { instagram } = SOCIAL_USERNAMES
+const { instagram } = SOCIAL_USERNAMES
+
+const Footer = () => {
+  const [navigation, setNavigation] = React.useState<TNavigation>()
+  React.useEffect(() => {
+    const fetchNavigation = async () => {
+      const nav = await getNavigation()
+      setNavigation(nav)
+    }
+    fetchNavigation()
+  }, [])
 
   return (
     <footer className="block bottom-0 left-0 right-0 bg-primary-05 px-6 py-6 md:px-32 lg:px-48 xl:px-1/5">
@@ -14,9 +25,9 @@ const Footer = ({ categories, faculties }: TNavigation) => {
         aria-label="Footer Nav"
       >
         <div>
-          <h3 className={s.heading}>Kategorije</h3>
+          <h3 className={s.heading}>Категорије</h3>
           <ul className={s.ul}>
-            {categories.map((category) => (
+            {navigation?.categories.map((category) => (
               <li key={category.slug}>
                 <Link href={`/${category.slug}`}>
                   <a className={s.link}>{category.title}</a>
@@ -27,9 +38,9 @@ const Footer = ({ categories, faculties }: TNavigation) => {
         </div>
 
         <div>
-          <h3 className={s.heading}>Fakulteti</h3>
+          <h3 className={s.heading}>Факултети</h3>
           <ul className={s.ul}>
-            {faculties.map((fax) => (
+            {navigation?.faculties.map((fax) => (
               <li key={fax.slug}>
                 <Link href={`/faculties/${fax.slug}`}>
                   <a className={s.link}>{fax.title}</a>
@@ -40,17 +51,17 @@ const Footer = ({ categories, faculties }: TNavigation) => {
         </div>
 
         <div>
-          <h3 className={s.heading}>O nama</h3>
+          <h3 className={s.heading}>О нама</h3>
           <ul className={s.ul}>
             <li>
               <Link href="/contributors">
-                <a className={s.link}>Autori</a>
+                <a className={s.link}>Аутори</a>
               </Link>
             </li>
 
             <li>
               <Link href={`https://instagram.com/${instagram}`}>
-                <a className={s.link}>Kontakt</a>
+                <a className={s.link}>Контакт</a>
               </Link>
             </li>
           </ul>

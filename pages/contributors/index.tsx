@@ -22,7 +22,7 @@ export function ContributorsPage({
 
   return (
     <Layout>
-      <Hero title="Contributors" />
+      <Hero title="Аутори" />
       <ul className="flex flex-col flex-wrap justify-between md:flex-row md:py-6">
         {featured.map((contributor) => (
           <ContributorFeatured
@@ -31,7 +31,6 @@ export function ContributorsPage({
           />
         ))}
       </ul>
-      <h6 className="font-normal pt-4">more contributors</h6>
       <ul>
         {others.map((contributor) => (
           <Contributor contributor={contributor} key={contributor.slug} />

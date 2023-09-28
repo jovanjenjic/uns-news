@@ -68,7 +68,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
               </a>
             </Link>
             <div className="flex text-sm">
-              Autor
+              Аутор
               <Link href={`/contributors/${articles?.[0]?.author.slug}`}>
                 <a className="pl-1 pr-2 font-bold hover:underline">
                   {articles?.[0]?.author?.name}

@@ -83,7 +83,7 @@ function FacultyPage({
         <Markdown content={faculty.description} />
         <ArticlesList
           articles={articles || []}
-          title="Sve vesti ovog fakulteta"
+          title="СВЕ ВЕСТИ ОВОГ ФАКУЛТЕТА"
         />
       </Layout>
     </div>
