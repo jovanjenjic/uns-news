@@ -27,7 +27,7 @@ function Article({ article }: { article: TArticle | undefined }) {
           <>
             <Link href={`/faculties/${fax.slug}`}>
               <a className="uppercase text-sm font-bold text-accent">
-                {fax.title}
+                {fax?.shortTitle || fax.title}
               </a>
             </Link>
             {index !== article.faculties.length - 1 && (

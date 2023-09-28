@@ -1,7 +1,6 @@
 import { ArticlesCarousel, ArticlesList } from '@components/article'
 import { Hero } from '@components/common/Hero'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { startCase } from 'lodash'
 import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { NextSeo } from 'next-seo'
 import { Layout } from '@components/common/Layout'
@@ -64,9 +63,7 @@ function CategoryPage({
     return (
       <div>
         <Layout navigation={navigation}>
-          <Hero
-            title={`${startCase(faculty.title)} / ${startCase(category.title)}`}
-          />
+          <Hero title={`${faculty.title} / ${category.title}`} />
           <div className="text-center my-auto">
             <p>Ne postoje vesti.</p>
           </div>
@@ -100,9 +97,7 @@ function CategoryPage({
       />
 
       <Layout navigation={navigation}>
-        <Hero
-          title={`${startCase(faculty.title)} / ${startCase(category.title)}`}
-        />
+        <Hero title={`${faculty.title} / ${category.title}`} />
         {isTablet ? (
           //Tablet and smaller devices
           <ArticlesCarousel title="Top vesti" articles={articles.slice(0, 4)} />

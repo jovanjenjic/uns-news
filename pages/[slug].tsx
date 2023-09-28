@@ -6,7 +6,6 @@ import { NextSeo } from 'next-seo'
 import { Layout } from '@components/common/Layout'
 import { useMediaQuery } from '@lib/hooks/use-media-queries'
 import ArticlesHero from '@components/article/ArticlesHero/ArticlesHero'
-import { startCase } from 'lodash'
 
 export async function getStaticPaths() {
   const categories: TCategory[] = await fetchAPI('/categories')
@@ -56,7 +55,7 @@ function CategoryPage({
     return (
       <div>
         <Layout navigation={navigation}>
-          <Hero title={startCase(category.title) || startCase(faculty.title)} />
+          <Hero title={category.title || faculty.title} />
           <div className="text-center my-auto">
             <p>Ne postoje vesti.</p>
           </div>
@@ -90,7 +89,7 @@ function CategoryPage({
       />
 
       <Layout navigation={navigation}>
-        <Hero title={startCase(category.title) || startCase(faculty.title)} />
+        <Hero title={category.title || faculty.title} />
         {isTablet ? (
           //Tablet and smaller devices
           <ArticlesCarousel title="Top" articles={articles.slice(0, 4)} />

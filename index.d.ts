@@ -37,6 +37,7 @@ type TCategory = {
 type TFaculty = {
   id: number
   title: string
+  shortTitle: string
   slug: string
   description: string
   published_at: Date | string

@@ -15,18 +15,19 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
           <Link href={`/articles/${articles?.[0]?.slug}`}>
             <a aria-label={`Link to ${articles?.[0]?.title}`}>
               <div className={s.cover}>
-                {articles?.[0]?.cover?.formats?.medium?.url ||
-                  ((articles?.[0]?.cover?.url || articles?.[0]?.cover.url) && (
-                    <Image
-                      src={getMediaURL(
-                        articles?.[0]?.cover?.formats?.medium?.url ||
-                          articles?.[0]?.cover?.url
-                      )}
-                      alt={articles?.[0]?.cover?.alternativeText || ''}
-                      layout="fill"
-                      className="object-cover"
-                    />
-                  ))}
+                {(articles?.[0]?.cover?.formats?.medium?.url ||
+                  articles?.[0]?.cover?.url ||
+                  articles?.[0]?.cover.url) && (
+                  <Image
+                    src={getMediaURL(
+                      articles?.[0]?.cover?.formats?.medium?.url ||
+                        articles?.[0]?.cover?.url
+                    )}
+                    alt={articles?.[0]?.cover?.alternativeText || ''}
+                    layout="fill"
+                    className="object-cover"
+                  />
+                )}
               </div>
             </a>
           </Link>
@@ -46,7 +47,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
               <>
                 <Link href={`/faculties/${fax.slug}`}>
                   <a className="uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
-                    {fax.title}
+                    {fax?.shortTitle || fax.title}
                   </a>
                 </Link>
                 {index !== articles?.[0]?.faculties?.length - 1 && (
