@@ -16,7 +16,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
             <a aria-label={`Link to ${articles?.[0]?.title}`}>
               <div className={s.cover}>
                 {articles?.[0]?.cover?.formats?.medium?.url ||
-                  (articles?.[0]?.cover.url && (
+                  ((articles?.[0]?.cover.url || articles?.[0]?.cover.url) && (
                     <Image
                       src={getMediaURL(
                         articles?.[0]?.cover?.formats?.medium?.url ||
