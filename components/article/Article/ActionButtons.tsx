@@ -9,8 +9,8 @@ const ActionButtons = ({ article }: { article: TArticle }) => {
       </li>
       <li>
         <ShareButton
-          path={`/articles/${article.slug}`}
-          title={article.title}
+          path={`/articles/${article?.slug}`}
+          title={article?.title}
           message={'Check this article'}
         />
       </li>

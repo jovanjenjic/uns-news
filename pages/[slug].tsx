@@ -92,7 +92,7 @@ function CategoryPage({
           //Tablet and smaller devices
           <ArticlesCarousel title="Top" articles={articles.slice(0, 4)} />
         ) : (
-          <ArticlesHero articles={articles.slice(0, 4)} />
+          <ArticlesHero articles={articles?.slice(0, 4)} />
         )}
 
         <ArticlesList articles={articles.slice(4, 10)} title="Najnovije" />

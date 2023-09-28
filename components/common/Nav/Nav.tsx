@@ -16,7 +16,7 @@ const Nav = ({
   const { slug, subSlug } = router.query
 
   const findElementInCurrentList = (slugOrSubSlug: string): boolean => {
-    return !!list.map((item) => item.slug).find((val) => val === slugOrSubSlug)
+    return !!list?.map((item) => item.slug).find((val) => val === slugOrSubSlug)
   }
 
   const navigateOnNewPage = (val: string): void => {
@@ -45,7 +45,7 @@ const Nav = ({
       aria-label="Categories Nav"
       className={cn(
         'bg-secondary overflow-x-scroll sticky flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
-        'md:justify-center',
+        'justify-center',
         isFaculty ? 'top-14' : 'top-90px',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
@@ -63,7 +63,7 @@ const Nav = ({
       >
         {allText}
       </button>
-      {list.map((item) => (
+      {list?.map((item) => (
         <button
           onClick={() => navigateOnNewPage(item.slug)}
           key={item.slug}

@@ -8,13 +8,13 @@ const ListsPage = () => {
 
   return (
     <Layout>
-      {list && list.length !== 0 ? (
+      {list && list?.length !== 0 ? (
         <ArticlesList
           articles={list}
           title={
-            list.length === 1
-              ? `${list.length} Article`
-              : `${list.length} Articles`
+            list?.length === 1
+              ? `${list?.length} Article`
+              : `${list?.length} Articles`
           }
           variant="lists"
         />

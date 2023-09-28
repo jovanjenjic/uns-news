@@ -12,24 +12,27 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
     <section className="mb-4 flex justify-between items-center">
       <div style={{ width: '45%' }}>
         <article className={s.hero}>
-          <Link href={`/articles/${articles[0].slug}`}>
-            <a aria-label={`Link to ${articles[0].title}`}>
+          <Link href={`/articles/${articles[0]?.slug}`}>
+            <a aria-label={`Link to ${articles[0]?.title}`}>
               <div className={s.cover}>
-                <Image
-                  src={getMediaURL(
-                    articles[0].cover.formats.medium?.url ||
-                      articles[0].cover.url
-                  )}
-                  alt={articles[0].cover.alternativeText || ''}
-                  layout="fill"
-                  className="object-cover"
-                />
+                {articles[0]?.cover?.formats?.medium?.url ||
+                  (articles[0]?.cover.url && (
+                    <Image
+                      src={getMediaURL(
+                        articles[0]?.cover?.formats?.medium?.url ||
+                          articles[0]?.cover.url
+                      )}
+                      alt={articles[0]?.cover?.alternativeText || ''}
+                      layout="fill"
+                      className="object-cover"
+                    />
+                  ))}
               </div>
             </a>
           </Link>
 
           <section className="pt-8">
-            {articles[0].categories.map((category) => (
+            {articles[0]?.categories.map((category) => (
               <>
                 <Link href={`/${category.slug}`}>
                   <a className="uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
@@ -39,19 +42,19 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
                 <span className="mx-3 text-accent">|</span>
               </>
             ))}
-            {articles[0].faculties.map((fax, index) => (
+            {articles[0]?.faculties.map((fax, index) => (
               <>
                 <Link href={`/faculties/${fax.slug}`}>
                   <a className="uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
                     {fax.title}
                   </a>
                 </Link>
-                {index !== articles[0].faculties.length - 1 && (
+                {index !== articles[0]?.faculties?.length - 1 && (
                   <span className="mx-3 text-accent">|</span>
                 )}
               </>
             ))}
-            <Link href={`/articles/${articles[0].slug}`}>
+            <Link href={`/articles/${articles[0]?.slug}`}>
               <a>
                 <h3
                   className={cn(
@@ -59,21 +62,21 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
                     'serif leading-tight overflow-hidden max-h-28 mt-4 mb-2 hover:underline'
                   )}
                 >
-                  {articles[0].title}
+                  {articles[0]?.title}
                 </h3>
               </a>
             </Link>
             <div className="flex text-sm">
               Autor
-              <Link href={`/contributors/${articles[0].author.slug}`}>
+              <Link href={`/contributors/${articles[0]?.author.slug}`}>
                 <a className="pl-1 pr-2 font-bold hover:underline">
-                  {articles[0].author.name}
+                  {articles[0]?.author?.name}
                 </a>
               </Link>
               {' | '}
               <Date
                 className="px-2"
-                date={articles[0].published_at as string}
+                date={articles[0]?.published_at as string}
               />
             </div>
           </section>

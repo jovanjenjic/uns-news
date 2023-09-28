@@ -8,7 +8,7 @@ type Props = {
 
 const AddToListButton = ({ article }: Props) => {
   const { list, addToList, removeFromList } = useList()
-  const isOnList = list.some((item: TArticle) => item.slug === article.slug)
+  const isOnList = list?.some((item: TArticle) => item.slug === article.slug)
 
   const onButtonClick = async () => {
     if (!isOnList) {

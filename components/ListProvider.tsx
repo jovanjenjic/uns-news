@@ -22,7 +22,7 @@ const ListProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const removeFromList = async (article: TArticle) => {
-    setList(list.filter((item: TArticle) => item.slug !== article.slug))
+    setList(list?.filter((item: TArticle) => item.slug !== article.slug))
     addToast('Article removed!')
     await removeContent(article)
   }
