@@ -1,5 +1,5 @@
 export function getStrapiURL(path: string) {
-  return `${process.env.API_URL || 'http://localhost:1337'}${path}`
+  return `${'https://strapi-uns-news.onrender.com' || 'http://localhost:1337'}${path}`
 }
 
 // Helper to make GET requests to Strapi
