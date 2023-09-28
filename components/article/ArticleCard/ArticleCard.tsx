@@ -20,14 +20,16 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
     <article className={rootClassName}>
       <Link href={`/articles/${article.slug}`}>
         <a aria-label={`Link to ${article.title}`} className={s.cover}>
-          <Image
-            src={getMediaURL(
-              article.cover.formats.medium?.url || article.cover.url
-            )}
-            alt={article.cover.alternativeText || ''}
-            layout="fill"
-            className="object-cover"
-          />
+          {(article?.cover?.formats?.medium?.url || article?.cover?.url) && (
+            <Image
+              src={getMediaURL(
+                article?.cover?.formats?.medium?.url || article?.cover?.url
+              )}
+              alt={article.cover.alternativeText || ''}
+              layout="fill"
+              className="object-cover"
+            />
+          )}
         </a>
       </Link>
 

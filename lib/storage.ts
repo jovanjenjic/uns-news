@@ -16,7 +16,9 @@ async function registerContent(article: TArticle) {
       category: 'article',
       icons: [
         {
-          src: getMediaURL(article.cover.formats.thumbnail?.url),
+          src: article?.cover?.formats?.thumbnail?.url
+            ? getMediaURL(article?.cover?.formats?.thumbnail?.url)
+            : '',
         },
       ],
     })

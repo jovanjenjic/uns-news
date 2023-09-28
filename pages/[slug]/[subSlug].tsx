@@ -82,13 +82,15 @@ function CategoryPage({
           // Only include OG image if exists
           // This will break disabling Strapi Image Optimization
           ...(category.cover && {
-            images: Object.values(category.cover.formats).map((image) => {
-              return {
-                url: getMediaURL(image?.url),
-                width: image?.width,
-                height: image?.height,
+            images: Object.values(category?.cover?.formats || []).map(
+              (image) => {
+                return {
+                  url: getMediaURL(image?.url),
+                  width: image?.width,
+                  height: image?.height,
+                }
               }
-            }),
+            ),
           }),
         }}
       />

@@ -66,7 +66,7 @@ function ContributorPage({
   const isFeatured = !!contributor?.featured
 
   const thumbnailUrl = getMediaURL(
-    contributor?.featured?.profile_image.formats.thumbnail?.url
+    contributor?.featured?.profile_image?.formats?.thumbnail?.url
   )
 
   const contributorSocialMedia = (urls: TContributor['urls']) => {

@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 function AuthorCard({ author }: { author: TContributor }) {
   const thumbnailUrl = getMediaURL(
-    author.featured?.profile_image.formats.thumbnail?.url
+    author.featured?.profile_image?.formats?.thumbnail?.url
   )
 
   return (

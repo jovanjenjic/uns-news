@@ -9,7 +9,7 @@ const ContributorFeatured = ({
   contributor: TContributor
 }) => {
   const thumbnailUrl = getMediaURL(
-    contributor?.featured?.profile_image.formats.thumbnail?.url
+    contributor?.featured?.profile_image?.formats?.thumbnail?.url
   )
   return (
     <li>

@@ -50,14 +50,16 @@ function Article({ article }: { article: TArticle | undefined }) {
         <ActionButtons article={article} />
 
         <div className="my-8">
-          <Image
-            src={getMediaURL(
-              article.cover.formats.medium?.url || article.cover.url
-            )}
-            alt={article.cover.alternativeText || ''}
-            width={article.cover.width}
-            height={article.cover.height}
-          />
+          {(article?.cover?.formats?.medium?.url || article?.cover?.url) && (
+            <Image
+              src={getMediaURL(
+                article?.cover?.formats?.medium?.url || article?.cover?.url
+              )}
+              alt={article.cover.alternativeText || ''}
+              width={article.cover.width}
+              height={article.cover.height}
+            />
+          )}
         </div>
       </header>
 
