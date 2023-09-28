@@ -20,13 +20,13 @@ const ListsPage = () => {
         />
       ) : (
         <div className="text-center my-auto">
-          <p>You haven&apos;t saved anything yet.</p>
+          <p>Још увек нисте сачували ништа.</p>
           <p>
-            Tap the{' '}
+            Додирните{' '}
             <span>
               <Bookmark className="inline-block" />
             </span>{' '}
-            icon to save them for later.
+            икону да новост сачувате за касније.
           </p>
         </div>
       )}

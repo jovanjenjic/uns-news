@@ -178,7 +178,7 @@ function ContributorPage({
           </p>
         )}
       </section>
-      <ArticlesList articles={articles || []} title="Sve vesti ovog autora" />
+      <ArticlesList articles={articles || []} title="Све вести овог аутора" />
     </Layout>
   )
 }

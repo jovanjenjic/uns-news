@@ -36,7 +36,7 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
         <Nav
           list={navigation.categories}
           isFaculty={false}
-          allText="SVE KATEGORIJE"
+          allText="СВЕ КАТЕГОРИЈЕ"
         />
       )}
 
@@ -49,12 +49,7 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
         {children}
       </main>
 
-      {navigation && (
-        <Footer
-          categories={navigation.categories}
-          faculties={navigation.faculties}
-        />
-      )}
+      <Footer />
     </>
   )
 }

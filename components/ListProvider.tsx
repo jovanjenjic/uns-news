@@ -17,13 +17,13 @@ const ListProvider = ({ children }: { children: React.ReactNode }) => {
 
   const addToList = async (article: TArticle) => {
     setList([...list, article])
-    addToast('Article saved!')
+    addToast('Чланак сачуван!')
     await storeContent(article)
   }
 
   const removeFromList = async (article: TArticle) => {
     setList(list?.filter((item: TArticle) => item.slug !== article.slug))
-    addToast('Article removed!')
+    addToast('Чланак уклоњен!')
     await removeContent(article)
   }
 
