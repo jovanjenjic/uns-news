@@ -13,8 +13,8 @@ export async function getStaticPaths() {
 
   const paths = []
 
-  categories.forEach((category) => {
-    faculties.forEach((fac) => {
+  categories?.forEach((category) => {
+    faculties?.forEach((fac) => {
       paths.push(`/${fac.slug}/${category.slug}`)
     })
   })
@@ -35,9 +35,10 @@ export async function getStaticProps({
     await fetchAPI(`/faculties?slug=${params?.slug}`)
   )[0]
 
-  const articles: TArticle[] = await fetchAPI(
-    `/articles?categories.slug=${params?.subSlug}&faculties.slug=${params?.slug}`
-  )
+  const articles: TArticle[] =
+    (await fetchAPI(
+      `/articles?categories.slug=${params?.subSlug}&faculties.slug=${params?.slug}`
+    )) || []
   const navigation: TNavigation = await getNavigation()
 
   return {
@@ -58,7 +59,7 @@ function CategoryPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const isTablet = useMediaQuery(1023)
 
-  if (articles.length === 0) {
+  if (!articles || articles?.length === 0) {
     return (
       <div>
         <Layout navigation={navigation}>
