@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import cn from 'classnames'
 import s from './Header.module.css'
 import { useRouter } from 'next/router'
@@ -37,13 +38,13 @@ const Header = () => {
   return (
     <header
       ref={searchRef}
-      className="bg-secondary fixed h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
+      className="bg-blue-primary text-white-primary fixed h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
     >
       <Button href="/lists" ariaLabel="My bookmarks">
         <Bookmark />
       </Button>
       <Link href="/">
-        <a className="serif text-2xl">УНС ПОРТАЛ</a>
+        <Image src='/img/Logo.png' alt="logo" width={200} height={50} />
       </Link>
       <Button onClick={() => setShowSearch(true)} ariaLabel="Search">
         {showSearch ? <Close /> : <Search />}

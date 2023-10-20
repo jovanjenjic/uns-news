@@ -36,7 +36,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
             {articles?.[0]?.categories.map((category) => (
               <>
                 <Link href={`/${category.slug}`}>
-                  <a className="uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
+                  <a className="uppercase text-sm font-bold px-2 py-1 bg-accent text-secondary border border-secondary rounded-sm hover:underline">
                     {category.title}
                   </a>
                 </Link>
@@ -46,7 +46,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
             {articles?.[0]?.faculties.map((fax, index) => (
               <>
                 <Link href={`/faculties/${fax.slug}`}>
-                  <a className="uppercase text-sm font-bold px-2 py-1 text-accent border border-accent rounded-sm hover:underline">
+                  <a className="uppercase text-sm font-bold px-2 py-1 bg-accent text-secondary border border-secondary rounded-sm hover:underline">
                     {fax?.shortTitle || fax.title}
                   </a>
                 </Link>

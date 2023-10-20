@@ -6,6 +6,9 @@ module.exports = {
       ...theme('colors'),
       DEFAULT: theme('colors.primary.20', 'currentColor'),
     }),
+    backgroundImage: {
+      'uns-img': "url('/img/Rektorat.jpeg')"
+    },
     boxShadow: {
       DEFAULT: '0 5px 15px 0 rgba(0, 0, 0, 0.15)',
     },
@@ -26,10 +29,8 @@ module.exports = {
       secondary: 'var(--secondary)',
       'black-a-30': 'var(--black-a-30)',
       accent: 'var(--accent)',
-      pink: {
-        DEFAULT: 'var(--pink)',
-        light: 'var(--pink-light)',
-      },
+      'blue-primary': 'var(--blue-primary)',
+      'white-primary': 'var(--white-primary)'
     },
     fontFamily: {
       sans: 'var(--font-sans)',
