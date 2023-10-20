@@ -45,7 +45,7 @@ const Nav = ({
     <nav
       aria-label="Categories Nav"
       className={cn(
-        'bg-secondary overflow-x-scroll sticky flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
+        'bg-blue-primary overflow-x-scroll sticky flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
         'justify-center',
         isFaculty ? 'top-14' : 'top-90px',
         isHidden ? '-translate-y-full' : 'translate-y-0'
@@ -54,12 +54,12 @@ const Nav = ({
       <Link href={navigateOnNewPage('')}>
         <p
           className={cn(
-            'cursor-pointer uppercase px-6 py-2 text-xs font-bold text-primary-90',
+            'cursor-pointer uppercase px-6 py-2 text-xs font-bold text-white-primary',
             (isFaculty
               ? !findElementInCurrentList(slug as string)
               : !findElementInCurrentList(slug as string) &&
                 !findElementInCurrentList(subSlug as string)) &&
-              'border-b-2 border-primary'
+              'border-b-2 border-accent text-accent'
           )}
         >
           {allText}
@@ -69,9 +69,9 @@ const Nav = ({
         <Link href={navigateOnNewPage(item.slug)} key={item.slug}>
           <p
             className={cn(
-              'cursor-pointer uppercase py-2 px-4 text-xs font-bold text-primary-90',
+              'cursor-pointer uppercase py-2 px-4 text-xs font-bold text-white-primary',
               (slug === item.slug || subSlug === item.slug) &&
-                'border-b-2 border-primary'
+                'border-b-2 border-accent text-accent'
             )}
           >
             {item.title}
