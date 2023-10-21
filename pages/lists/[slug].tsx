@@ -7,7 +7,16 @@ import { get } from 'idb-keyval'
 import { Article } from '@components/article'
 import { Layout } from '@components/common/Layout'
 import ArrowLeft from '@components/icons/ArrowLeft'
-import { getNavigation } from '@lib/api'
+import { fetchAPI, getNavigation } from '@lib/api'
+
+export async function getStaticPaths() {
+  const articles: TArticle[] = await fetchAPI('/articles')
+
+  return {
+    paths: articles?.map((article) => `/lists/${article.slug}`),
+    fallback: true,
+  }
+}
 
 export async function getStaticProps() {
 

@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   const articles: TArticle[] = await fetchAPI('/articles')
 
   return {
-    paths: articles.map((article) => `/articles/${article.slug}`),
+    paths: articles?.map((article) => `/articles/${article.slug}`),
     fallback: true, // Needs to be `true` to enable preview mode
   }
 
