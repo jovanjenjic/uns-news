@@ -58,7 +58,7 @@ const Nav = ({
               ? !findElementInCurrentList(slug as string)
               : !findElementInCurrentList(slug as string) &&
                 !findElementInCurrentList(subSlug as string)) ?
-              'border-b-2 border-accent text-accent' : 'text-white-primary'
+              'border-b border-accent text-accent' : 'text-white-primary'
           )}
         >
           {allText}
