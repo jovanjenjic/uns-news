@@ -3,21 +3,15 @@ import SocialUrls from './SocialUrls'
 import ThemeSwitch from '../ThemeSwitch'
 import s from './Footer.module.css'
 import { SOCIAL_USERNAMES } from '@lib/constants'
-import { getNavigation } from '@lib/api'
 import React from 'react'
 
 const { instagram } = SOCIAL_USERNAMES
 
-const Footer = () => {
-  const [navigation, setNavigation] = React.useState<TNavigation>()
-  React.useEffect(() => {
-    const fetchNavigation = async () => {
-      const nav = await getNavigation()
-      setNavigation(nav)
-    }
-    fetchNavigation()
-  }, [])
+type Props = {
+  navigation: TNavigation
+}
 
+const Footer = ({ navigation }: Props) => {
   return (
     <footer className="bg-blend-soft-light bg-uns-img bg-cover bg-center bg-uns-img block bottom-0 left-0 right-0 bg-primary-05 px-6 py-6 md:px-32 lg:px-48 xl:px-1/5">
       <nav

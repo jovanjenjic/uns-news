@@ -13,8 +13,8 @@ const ListsPage = () => {
           articles={list}
           title={
             list?.length === 1
-              ? `${list?.length} Article`
-              : `${list?.length} Articles`
+              ? `${list?.length} Сачувана вест`
+              : `${list?.length} Сачеване вести`
           }
           variant="lists"
         />

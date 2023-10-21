@@ -45,21 +45,20 @@ const Nav = ({
     <nav
       aria-label="Categories Nav"
       className={cn(
-        'bg-blue-primary overflow-x-scroll sticky flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
-        'justify-center',
-        isFaculty ? 'top-14' : 'top-90px',
+        'bg-blue-primary overflow-x-scroll fixed w-full flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
+        isFaculty ? 'top-20' : 'top-114px',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
       <Link href={navigateOnNewPage('')}>
         <p
           className={cn(
-            'cursor-pointer uppercase px-6 py-2 text-xs font-bold text-white-primary',
+            'cursor-pointer uppercase px-6 py-2 text-xs font-bold',
             (isFaculty
               ? !findElementInCurrentList(slug as string)
               : !findElementInCurrentList(slug as string) &&
-                !findElementInCurrentList(subSlug as string)) &&
-              'border-b-2 border-accent text-accent'
+                !findElementInCurrentList(subSlug as string)) ?
+              'border-b-2 border-accent text-accent' : 'text-white-primary'
           )}
         >
           {allText}
@@ -69,9 +68,9 @@ const Nav = ({
         <Link href={navigateOnNewPage(item.slug)} key={item.slug}>
           <p
             className={cn(
-              'cursor-pointer uppercase py-2 px-4 text-xs font-bold text-white-primary',
-              (slug === item.slug || subSlug === item.slug) &&
-                'border-b-2 border-accent text-accent'
+              'cursor-pointer uppercase py-2 px-4 text-xs font-bold',
+              (slug === item.slug || subSlug === item.slug) ?
+                'border-b-2 border-accent text-accent' : 'text-white-primary'
             )}
           >
             {item.title}

@@ -38,13 +38,13 @@ const Header = () => {
   return (
     <header
       ref={searchRef}
-      className="bg-blue-primary text-white-primary fixed h-14 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
+      className="bg-blue-primary text-white-primary fixed h-20 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
     >
       <Button href="/lists" ariaLabel="My bookmarks">
         <Bookmark />
       </Button>
       <Link href="/">
-        <Image src='/img/Logo.png' alt="logo" width={200} height={50} />
+        <Image className="cursor-pointer" src='/img/Logo.png' alt="logo" width={200} height={50} />
       </Link>
       <Button onClick={() => setShowSearch(true)} ariaLabel="Search">
         {showSearch ? <Close /> : <Search />}
