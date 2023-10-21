@@ -54,7 +54,7 @@ module.exports = {
         '3/5': '60%',
         '4/5': '80%',
         full: '100%',
-        '113px': '113px',
+        '112px': '112px',
       },
       screens: {
         standalone: {
