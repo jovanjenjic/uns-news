@@ -58,7 +58,7 @@ const Nav = ({
               ? !findElementInCurrentList(slug as string)
               : !findElementInCurrentList(slug as string) &&
                 !findElementInCurrentList(subSlug as string)) ?
-              'border-b border-accent text-accent' : 'text-white-primary'
+              'border-b-2 border-accent text-accent' : 'text-white-primary'
           )}
         >
           {allText}
@@ -70,7 +70,7 @@ const Nav = ({
             className={cn(
               'cursor-pointer uppercase py-2 px-4 text-xs font-bold',
               (slug === item.slug || subSlug === item.slug) ?
-                'border-b border-accent text-accent' : 'text-white-primary'
+                'border-b-2 border-accent text-accent' : 'text-white-primary'
             )}
           >
             {item.title}
