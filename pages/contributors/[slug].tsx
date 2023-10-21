@@ -1,5 +1,5 @@
 import { ArticlesList } from '@components/article'
-import { fetchAPI, getMediaURL } from '@lib/api'
+import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ExternalLink from '@components/ui/Link/ExternalLink'
@@ -43,14 +43,17 @@ export async function getStaticProps({
     `/articles?author.slug=${params?.slug}`
   )
 
+  const navigation: TNavigation = await getNavigation()
+
   // No props will trigger a 404
-  if (!contributor) return { props: {} }
-  return { props: { contributor, articles } }
+  if (!contributor) return { props: { navigation } }
+  return { props: { contributor, articles, navigation } }
 }
 
 function ContributorPage({
   contributor,
   articles,
+  navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback, back } = useRouter()
 
@@ -83,7 +86,7 @@ function ContributorPage({
   }
 
   return (
-    <Layout>
+    <Layout navigation={navigation}>
       <SocialProfileJsonLd
         type="Person"
         name={contributor?.name as string}

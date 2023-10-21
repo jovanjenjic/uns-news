@@ -89,7 +89,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
         {articles.slice(0, 4).map((article, index) => (
           <ArticleCardTop
             article={article}
-            index={index + 1}
+            index={index}
             key={article.slug}
           />
         ))}

@@ -2,17 +2,20 @@ import Contributor from '@components/contributor/Contributor'
 import ContributorFeatured from '@components/contributor/ContributorFeatured'
 import { Layout } from '@components/common/Layout'
 import Hero from '@components/common/Hero/Hero'
-import { fetchAPI } from '@lib/api'
+import { fetchAPI, getNavigation } from '@lib/api'
 import { partition } from '@lib/partition'
 import { InferGetStaticPropsType } from 'next'
 
 export async function getStaticProps() {
   const contributors: TContributor[] = await fetchAPI('/contributors')
-  return { props: { contributors } }
+  const navigation: TNavigation = await getNavigation()
+
+  return { props: { contributors, navigation } }
 }
 
 export function ContributorsPage({
   contributors,
+  navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   // Create 2 differents arrays based on the condition
   const [featured, others] = partition<TContributor>(
@@ -21,7 +24,7 @@ export function ContributorsPage({
   )
 
   return (
-    <Layout>
+    <Layout navigation={navigation}>
       <Hero title="Аутори" />
       <ul className="flex flex-col flex-wrap justify-between md:flex-row md:py-6">
         {featured.map((contributor) => (

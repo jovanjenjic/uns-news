@@ -46,7 +46,7 @@ const Nav = ({
       aria-label="Categories Nav"
       className={cn(
         'bg-blue-primary overflow-x-scroll fixed w-full flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
-        isFaculty ? 'top-20' : 'top-114px',
+        isFaculty ? 'top-20' : 'top-113px',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
@@ -58,7 +58,7 @@ const Nav = ({
               ? !findElementInCurrentList(slug as string)
               : !findElementInCurrentList(slug as string) &&
                 !findElementInCurrentList(subSlug as string)) ?
-              'border-b-2 border-accent text-accent' : 'text-white-primary'
+              'border-b border-accent text-accent' : 'text-white-primary'
           )}
         >
           {allText}
@@ -70,7 +70,7 @@ const Nav = ({
             className={cn(
               'cursor-pointer uppercase py-2 px-4 text-xs font-bold',
               (slug === item.slug || subSlug === item.slug) ?
-                'border-b-2 border-accent text-accent' : 'text-white-primary'
+                'border-b border-accent text-accent' : 'text-white-primary'
             )}
           >
             {item.title}

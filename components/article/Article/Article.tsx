@@ -11,7 +11,7 @@ function Article({ article }: { article: TArticle | undefined }) {
 
   return (
     <article>
-      <header className="py-10">
+      <header className="pb-10 pt-4">
         {article.categories.map((category) => (
           <>
             <Link href={`/${category.slug}`}>

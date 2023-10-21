@@ -1,5 +1,5 @@
 import { ArticlesList } from '@components/article'
-import { fetchAPI, getMediaURL } from '@lib/api'
+import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import ExternalLink from '@components/ui/Link/ExternalLink'
@@ -30,15 +30,18 @@ export async function getStaticProps({
   const articles: TArticle[] = await fetchAPI(
     `/articles?faculties.slug=${params?.slug}`
   )
+  const navigation: TNavigation = await getNavigation()
+
 
   // No props will trigger a 404
-  if (!faculty) return { props: {} }
-  return { props: { faculty, articles } }
+  if (!faculty) return { props: { navigation } }
+  return { props: { faculty, articles, navigation } }
 }
 
 function FacultyPage({
   faculty,
   articles,
+  navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback, back } = useRouter()
 
@@ -52,7 +55,7 @@ function FacultyPage({
 
   return (
     <div>
-      <Layout>
+      <Layout navigation={navigation}>
         <Button ariaLabel="Go back" onClick={handleGoBack} className="-ml-2">
           <ArrowLeft />
         </Button>

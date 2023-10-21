@@ -7,8 +7,20 @@ import { get } from 'idb-keyval'
 import { Article } from '@components/article'
 import { Layout } from '@components/common/Layout'
 import ArrowLeft from '@components/icons/ArrowLeft'
+import { getNavigation } from '@lib/api'
 
-function ArticlePage() {
+export async function getStaticProps() {
+
+  const navigation: TNavigation = await getNavigation()
+
+  return {
+    props: {
+      navigation,
+    },
+  }
+}
+
+function ArticlePage({ navigation }: { navigation: TNavigation }) {
   const [article, setArticle] = useState<TArticle | 'loading' | null>('loading')
 
   const {
@@ -33,7 +45,7 @@ function ArticlePage() {
   }
 
   return (
-    <Layout>
+    <Layout navigation={navigation}>
       <Link href={'/lists'}>
         <a aria-label="Go back">
           <ArrowLeft />

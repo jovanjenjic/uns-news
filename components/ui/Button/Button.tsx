@@ -27,7 +27,7 @@ const Button = ({
           aria-label={ariaLabel}
           style={style}
           className={cn(
-            'p-2 w-max rounded-full disabled:opacity-50 hover:bg-primary-05',
+            'p-2 w-max rounded-full disabled:opacity-50 hover:bg-primary-20',
             className
           )}
           {...rest}
@@ -43,7 +43,7 @@ const Button = ({
       style={style}
       aria-label={ariaLabel}
       className={cn(
-        'p-2 w-max rounded-full disabled:opacity-50 hover:bg-primary-05',
+        'p-2 w-max rounded-full disabled:opacity-50 hover:bg-primary-20',
         className
       )}
       {...rest}

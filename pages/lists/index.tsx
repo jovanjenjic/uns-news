@@ -1,13 +1,25 @@
 import { ArticlesList } from '@components/article'
 import { Layout } from '@components/common/Layout'
 import Bookmark from '@components/icons/Bookmark'
+import { getNavigation } from '@lib/api'
 import { useList } from '@lib/hooks/use-list'
 
-const ListsPage = () => {
+export async function getStaticProps() {
+
+  const navigation: TNavigation = await getNavigation()
+
+  return {
+    props: {
+      navigation,
+    },
+  }
+}
+
+const ListsPage = ({ navigation }: { navigation: TNavigation }) => {
   const { list } = useList()
 
   return (
-    <Layout>
+    <Layout navigation={navigation}>
       {list && list?.length !== 0 ? (
         <ArticlesList
           articles={list}

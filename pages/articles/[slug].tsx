@@ -1,4 +1,4 @@
-import { fetchAPI, getMediaURL } from '@lib/api'
+import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import { Article } from '@components/article'
@@ -31,6 +31,9 @@ export async function getStaticProps({
   params,
   preview = false,
 }: GetStaticPropsContext<{ slug: string }>) {
+  
+  const navigation: TNavigation = await getNavigation()
+
   // if is preview it will search on to the unpublished entries as well
   const article: TArticle = (
     await fetchAPI(
@@ -41,13 +44,14 @@ export async function getStaticProps({
   )[0]
 
   // No props will trigger a 404
-  if (!article) return { props: {} }
-  return { props: { preview, article } }
+  if (!article) return { props: { navigation } }
+  return { props: { preview, article, navigation } }
 }
 
 function ArticlePage({
   article,
   preview,
+  navigation
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback, back } = useRouter()
 
@@ -63,7 +67,7 @@ function ArticlePage({
 
   return (
     <div>
-      <Layout isMarkdown>
+      <Layout isMarkdown navigation={navigation}>
         <NextSeo
           title={article?.title}
           description={article?.description}

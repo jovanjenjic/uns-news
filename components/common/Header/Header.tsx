@@ -51,7 +51,7 @@ const Header = () => {
       </Button>
 
       <div className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}>
-        <label className="flex items-center border-b w-full py-2 pl-3 focus-within:border-primary md:pb-0">
+        <label className="flex items-center border-b w-full py-2 pl-3 focus-within:border-accent md:pb-0">
           <span className="absolute">
             <Search />
           </span>
