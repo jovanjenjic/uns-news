@@ -25,20 +25,20 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
   return (
     <>
       <Header />
-        {navigation && (
-          <Nav
-            list={navigation.faculties}
-            isFaculty={true}
-            allText="SVI FAKULTET"
-          />
-        )}
-        {navigation && (
-          <Nav
-            list={navigation.categories}
-            isFaculty={false}
-            allText="СВЕ КАТЕГОРИЈЕ"
-          />
-        )}
+      {navigation && (
+        <Nav
+          list={navigation.faculties}
+          isFaculty={true}
+          allText="SVI FAKULTET"
+        />
+      )}
+      {navigation && (
+        <Nav
+          list={navigation.categories}
+          isFaculty={false}
+          allText="СВЕ КАТЕГОРИЈЕ"
+        />
+      )}
       <main
         className={cn(
           'min-h-screen px-4 pt-40 pb-20 flex flex-col mx-auto md:w-3/4',

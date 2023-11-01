@@ -32,7 +32,6 @@ export async function getStaticProps({
   )
   const navigation: TNavigation = await getNavigation()
 
-
   // No props will trigger a 404
   if (!faculty) return { props: { navigation } }
   return { props: { faculty, articles, navigation } }

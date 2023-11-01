@@ -21,6 +21,9 @@ type TArticle = {
   created_at: Date | string
   updated_at: Date | string
   cover: TStrapiImage
+  featured: boolean
+  popular: boolean
+  main: boolean
 }
 
 type TCategory = {

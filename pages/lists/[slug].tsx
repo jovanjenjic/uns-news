@@ -19,7 +19,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps() {
-
   const navigation: TNavigation = await getNavigation()
 
   return {

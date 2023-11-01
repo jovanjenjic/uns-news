@@ -7,7 +7,13 @@ import Image from 'next/image'
 import ArticleCardTop from '../ArticleCard/ArticleCardTop'
 import ActionButtons from '../Article/ActionButtons'
 
-const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
+const ArticlesHero = ({
+  articles,
+  mainArticle,
+}: {
+  articles: TArticle[]
+  mainArticle?: TArticle
+}) => {
   return (
     <section className="mb-4 flex justify-between items-center">
       <div style={{ width: '45%' }}>
@@ -15,15 +21,15 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
           <Link href={`/articles/${articles?.[0]?.slug}`}>
             <a aria-label={`Link to ${articles?.[0]?.title}`}>
               <div className={s.cover}>
-                {(articles?.[0]?.cover?.formats?.medium?.url ||
-                  articles?.[0]?.cover?.url ||
-                  articles?.[0]?.cover.url) && (
+                {(mainArticle?.cover?.formats?.medium?.url ||
+                  mainArticle?.cover?.url ||
+                  mainArticle?.cover.url) && (
                   <Image
                     src={getMediaURL(
-                      articles?.[0]?.cover?.formats?.medium?.url ||
-                        articles?.[0]?.cover?.url
+                      mainArticle?.cover?.formats?.medium?.url ||
+                        mainArticle?.cover?.url
                     )}
-                    alt={articles?.[0]?.cover?.alternativeText || ''}
+                    alt={mainArticle?.cover?.alternativeText || ''}
                     layout="fill"
                     className="object-cover"
                   />
@@ -33,7 +39,7 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
           </Link>
 
           <section className="pt-8">
-            {articles?.[0]?.categories.map((category) => (
+            {mainArticle?.categories.map((category) => (
               <>
                 <Link href={`/${category.slug}`}>
                   <a className="uppercase text-sm font-bold px-2 py-1 bg-accent text-secondary border border-secondary rounded-sm hover:underline">
@@ -43,19 +49,19 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
                 <span className="mx-3 text-accent">|</span>
               </>
             ))}
-            {articles?.[0]?.faculties.map((fax, index) => (
+            {mainArticle?.faculties.map((fax, index) => (
               <>
                 <Link href={`/faculties/${fax.slug}`}>
                   <a className="uppercase text-sm font-bold px-2 py-1 bg-accent text-secondary border border-secondary rounded-sm hover:underline">
                     {fax?.shortTitle || fax.title}
                   </a>
                 </Link>
-                {index !== articles?.[0]?.faculties?.length - 1 && (
+                {index !== mainArticle?.faculties?.length - 1 && (
                   <span className="mx-3 text-accent">|</span>
                 )}
               </>
             ))}
-            <Link href={`/articles/${articles?.[0]?.slug}`}>
+            <Link href={`/articles/${mainArticle?.slug}`}>
               <a>
                 <h3
                   className={cn(
@@ -63,35 +69,31 @@ const ArticlesHero = ({ articles }: { articles: TArticle[] }) => {
                     'serif leading-tight overflow-hidden max-h-28 mt-4 mb-2 hover:underline'
                   )}
                 >
-                  {articles?.[0]?.title}
+                  {mainArticle?.title}
                 </h3>
               </a>
             </Link>
             <div className="flex text-sm">
               Аутор
-              <Link href={`/contributors/${articles?.[0]?.author.slug}`}>
+              <Link href={`/contributors/${mainArticle?.author.slug}`}>
                 <a className="pl-1 pr-2 font-bold hover:underline">
-                  {articles?.[0]?.author?.name}
+                  {mainArticle?.author?.name}
                 </a>
               </Link>
               {' | '}
               <Date
                 className="px-2"
-                date={articles?.[0]?.published_at as string}
+                date={mainArticle?.published_at as string}
               />
             </div>
           </section>
-          <ActionButtons article={articles?.[0]} />
+          <ActionButtons article={mainArticle} />
         </article>
       </div>
 
       <div style={{ width: '45%' }}>
-        {articles.slice(0, 4).map((article, index) => (
-          <ArticleCardTop
-            article={article}
-            index={index}
-            key={article.slug}
-          />
+        {articles.map((article, index) => (
+          <ArticleCardTop article={article} index={index} key={article.slug} />
         ))}
       </div>
     </section>

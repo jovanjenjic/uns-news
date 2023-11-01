@@ -2,7 +2,6 @@ import { Layout } from '@components/common/Layout'
 import { getNavigation } from '@lib/api'
 
 export async function getStaticProps() {
-
   const navigation: TNavigation = await getNavigation()
 
   return {
@@ -12,7 +11,7 @@ export async function getStaticProps() {
   }
 }
 
-const offline = ({ navigation }: { navigation: TNavigation}) => {
+const offline = ({ navigation }: { navigation: TNavigation }) => {
   return (
     <Layout navigation={navigation}>
       <div className="text-center my-auto">

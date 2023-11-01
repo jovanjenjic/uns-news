@@ -5,7 +5,6 @@ import { getNavigation } from '@lib/api'
 import { useList } from '@lib/hooks/use-list'
 
 export async function getStaticProps() {
-
   const navigation: TNavigation = await getNavigation()
 
   return {
