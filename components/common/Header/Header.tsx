@@ -44,7 +44,13 @@ const Header = () => {
         <Bookmark />
       </Button>
       <Link href="/">
-        <Image className="cursor-pointer" src='/img/Logo.png' alt="logo" width={200} height={50} />
+        <Image
+          className="cursor-pointer"
+          src="/img/Logo.png"
+          alt="logo"
+          width={200}
+          height={50}
+        />
       </Link>
       <Button onClick={() => setShowSearch(true)} ariaLabel="Search">
         {showSearch ? <Close /> : <Search />}

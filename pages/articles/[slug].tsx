@@ -31,7 +31,6 @@ export async function getStaticProps({
   params,
   preview = false,
 }: GetStaticPropsContext<{ slug: string }>) {
-  
   const navigation: TNavigation = await getNavigation()
 
   // if is preview it will search on to the unpublished entries as well
@@ -51,7 +50,7 @@ export async function getStaticProps({
 function ArticlePage({
   article,
   preview,
-  navigation
+  navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback, back } = useRouter()
 

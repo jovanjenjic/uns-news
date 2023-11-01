@@ -54,11 +54,14 @@ const Nav = ({
         <p
           className={cn(
             'cursor-pointer uppercase px-6 py-2 text-xs font-bold',
-            (isFaculty
-              ? !findElementInCurrentList(slug as string)
-              : !findElementInCurrentList(slug as string) &&
-                !findElementInCurrentList(subSlug as string)) ?
-              'text-accent' : 'text-white-primary'
+            (
+              isFaculty
+                ? !findElementInCurrentList(slug as string)
+                : !findElementInCurrentList(slug as string) &&
+                  !findElementInCurrentList(subSlug as string)
+            )
+              ? 'text-accent'
+              : 'text-white-primary'
           )}
         >
           {allText}
@@ -69,8 +72,9 @@ const Nav = ({
           <p
             className={cn(
               'cursor-pointer uppercase py-2 px-4 text-xs font-bold',
-              (slug === item.slug || subSlug === item.slug) ?
-                'text-accent' : 'text-white-primary'
+              slug === item.slug || subSlug === item.slug
+                ? 'text-accent'
+                : 'text-white-primary'
             )}
           >
             {item.title}

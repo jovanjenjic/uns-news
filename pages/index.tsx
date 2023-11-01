@@ -12,11 +12,22 @@ export async function getStaticProps() {
   return { props: { articles, navigation } }
 }
 
+const resolvePopularArticles = (articles: TArticle[]) => {
+  return articles.filter((article) => article.popular).slice(0, 4)
+}
+const resolveFeaturedArticles = (articles: TArticle[]) => {
+  return articles.filter((article) => article.featured).slice(0, 4)
+}
+
 function Home({
   articles,
   navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const isTablet = useMediaQuery(1023)
+
+  const featuredArticles = resolveFeaturedArticles(articles)
+  const popularArticles = resolvePopularArticles(articles)
+  const mainArticle = articles.find((article) => article.main) || articles?.[0]
 
   return (
     <div>
@@ -25,27 +36,40 @@ function Home({
           //Tablet and smaller devices
           <ArticlesCarousel title="Топ вести" articles={articles.slice(0, 4)} />
         ) : (
-          <ArticlesHero articles={articles.slice(0, 4)} />
+          <ArticlesHero
+            articles={articles.slice(0, 4)}
+            mainArticle={mainArticle}
+          />
         )}
 
         <ArticlesList articles={articles.slice(4, 10)} title="НАЈНОВИЈЕ" />
 
         <div className="lg:py-24 lg:flex lg:w-full lg:gap-28 lg:mx-auto">
           <ArticlesList
-            articles={articles.slice(0, 5)}
+            articles={featuredArticles}
             title="ИСТАКНУТО"
             variant="top"
             className="lg:w-1/2"
           />
           <ArticlesList
-            articles={articles.slice(5, 10)}
+            articles={popularArticles}
             title="Популарно"
             variant="top"
             className="lg:w-1/2"
           />
         </div>
 
-        <ArticlesList articles={articles.slice(10)} title="ВИШЕ НОВОСТИ" />
+        <ArticlesList
+          articles={articles
+            .slice(10)
+            .filter(
+              (article) =>
+                !featuredArticles.map((fa) => fa.id).includes(article.id) &&
+                !popularArticles.map((pa) => pa.id).includes(article.id) &&
+                mainArticle?.id !== article.id
+            )}
+          title="ВИШЕ НОВОСТИ"
+        />
       </Layout>
     </div>
   )
