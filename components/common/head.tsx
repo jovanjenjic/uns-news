@@ -22,7 +22,7 @@ const Head = () => {
     <>
       <DefaultSeo
         titleTemplate={`%s | ${SITE_NAME}`}
-        title="Online Magazine Starter Kit"
+        title="Студентска апликација за информисање"
         description={SEO_DESCRIPTION}
         openGraph={{
           type: 'website',
