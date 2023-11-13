@@ -102,7 +102,7 @@ function CategoryPage({
       <Layout navigation={navigation}>
         {isTablet ? (
           //Tablet and smaller devices
-          <ArticlesCarousel title="Топ вести" articles={articles.slice(0, 4)} />
+          <ArticlesCarousel articles={articles.slice(0, 4)} />
         ) : (
           <ArticlesHero
             articles={articles.slice(0, 4)}

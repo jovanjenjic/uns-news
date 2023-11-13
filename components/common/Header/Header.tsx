@@ -43,17 +43,19 @@ const Header = () => {
         ref={searchRef}
         className="bg-blue-primary text-white-primary fixed h-20 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
       >
-        <div style={{ visibility: "hidden" }} />
-        <Link href="/">
-          <Image
-            className="cursor-pointer"
-            src="/img/Logo.png"
-            alt="logo"
-            width={200}
-            height={50}
-          />
-        </Link>
-        <div className='flex'>
+        <div style={{ visibility: 'hidden' }} />
+        <div className="ml-12">
+          <Link href="/">
+            <Image
+              className="cursor-pointer"
+              src="/img/Logo.png"
+              alt="logo"
+              width={190}
+              height={42}
+            />
+          </Link>
+        </div>
+        <div className="flex">
           <Button onClick={() => setShowSearch(true)} ariaLabel="Search">
             {showSearch ? <Close /> : <Search />}
           </Button>
@@ -61,7 +63,12 @@ const Header = () => {
             <Bookmark />
           </Button>
         </div>
-        <div className={cn(s.searchContainer, showSearch ? 'flex absolute right-4' : 'hidden')}>
+        <div
+          className={cn(
+            s.searchContainer,
+            showSearch ? 'flex absolute right-4' : 'hidden'
+          )}
+        >
           <label className="flex items-center border-b w-full py-2 pl-3 focus-within:border-accent md:pb-0">
             <span className="absolute">
               <Search />
@@ -88,7 +95,10 @@ const Header = () => {
                 }
               }}
             />
-            <Button onClick={() => setShowSearch(false)} ariaLabel="Close search">
+            <Button
+              onClick={() => setShowSearch(false)}
+              ariaLabel="Close search"
+            >
               <Close />
             </Button>
           </label>

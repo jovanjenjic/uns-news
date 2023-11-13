@@ -2,6 +2,8 @@ import { Date } from '@components/ui/Date'
 import Link from 'next/link'
 import s from './ArticleCard.module.css'
 import cn from 'classnames'
+import Image from 'next/image'
+import { getMediaURL } from '@lib/api'
 
 type Props = {
   article: TArticle
@@ -12,6 +14,23 @@ const ArticleCardTop = ({ article, index }: Props) => {
   return (
     <article className={s.top}>
       <div className={s.topNumber}>{index + 1}</div>
+      <div className="lg:flex hidden mr-4">
+        <Link href={`/articles/${article.slug}`}>
+          <a aria-label={`Link to ${article.title}`} className={s.cover}>
+            {(article?.cover?.formats?.medium?.url || article?.cover?.url) && (
+              <Image
+                src={getMediaURL(
+                  article?.cover?.formats?.medium?.url || article?.cover?.url
+                )}
+                alt={article.cover.alternativeText || ''}
+                className="object-cover"
+                width={100}
+                height={90}
+              />
+            )}
+          </a>
+        </Link>
+      </div>
       <section>
         <Link href={`/articles/${article.slug}`}>
           <a>
