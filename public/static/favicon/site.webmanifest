@@ -1,7 +1,7 @@
 {
-  "name": "Magazine",
-  "short_name": "Magazine",
-  "description": "Online magazine starter kit",
+  "name": "Студентски фокус",
+  "short_name": "Студентски фокус",
+  "description": "Студентска апликација за оглашавање и информисање",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#ffffff",

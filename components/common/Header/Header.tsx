@@ -14,6 +14,7 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
+import HamburgerMenu from '@components/hamburger/Hamburger'
 
 const Header = () => {
   const router = useRouter()
@@ -36,59 +37,64 @@ const Header = () => {
   }, [showSearch, isMobile])
 
   return (
-    <header
-      ref={searchRef}
-      className="bg-blue-primary text-white-primary fixed h-20 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
-    >
-      <Button href="/lists" ariaLabel="My bookmarks">
-        <Bookmark />
-      </Button>
-      <Link href="/">
-        <Image
-          className="cursor-pointer"
-          src="/img/Logo.png"
-          alt="logo"
-          width={200}
-          height={50}
-        />
-      </Link>
-      <Button onClick={() => setShowSearch(true)} ariaLabel="Search">
-        {showSearch ? <Close /> : <Search />}
-      </Button>
-
-      <div className={cn(s.searchContainer, showSearch ? 'flex' : 'hidden')}>
-        <label className="flex items-center border-b w-full py-2 pl-3 focus-within:border-accent md:pb-0">
-          <span className="absolute">
-            <Search />
-          </span>
-          <input
-            type="search"
-            inputMode="search"
-            name="search"
-            id="search"
-            placeholder="Претрага..."
-            className="bg-transparent outline-none w-full py-2 pr-2 pl-9 search-btn-none lg:text-sm"
-            onKeyUp={(e) => {
-              e.preventDefault()
-              if (e.key === 'Enter') {
-                const q = e.currentTarget.value
-                router.push(
-                  {
-                    pathname: '/search',
-                    query: q ? { q } : {},
-                  },
-                  undefined,
-                  { shallow: true }
-                )
-              }
-            }}
+    <>
+      <HamburgerMenu />
+      <header
+        ref={searchRef}
+        className="bg-blue-primary text-white-primary fixed h-20 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
+      >
+        <div style={{ visibility: "hidden" }} />
+        <Link href="/">
+          <Image
+            className="cursor-pointer"
+            src="/img/Logo.png"
+            alt="logo"
+            width={200}
+            height={50}
           />
-          <Button onClick={() => setShowSearch(false)} ariaLabel="Close search">
-            <Close />
+        </Link>
+        <div className='flex'>
+          <Button onClick={() => setShowSearch(true)} ariaLabel="Search">
+            {showSearch ? <Close /> : <Search />}
           </Button>
-        </label>
-      </div>
-    </header>
+          <Button href="/lists" ariaLabel="My bookmarks">
+            <Bookmark />
+          </Button>
+        </div>
+        <div className={cn(s.searchContainer, showSearch ? 'flex absolute right-4' : 'hidden')}>
+          <label className="flex items-center border-b w-full py-2 pl-3 focus-within:border-accent md:pb-0">
+            <span className="absolute">
+              <Search />
+            </span>
+            <input
+              type="search"
+              inputMode="search"
+              name="search"
+              id="search"
+              placeholder="Претрага..."
+              className="bg-transparent outline-none w-full py-2 pr-2 pl-9 search-btn-none lg:text-sm"
+              onKeyUp={(e) => {
+                e.preventDefault()
+                if (e.key === 'Enter') {
+                  const q = e.currentTarget.value
+                  router.push(
+                    {
+                      pathname: '/search',
+                      query: q ? { q } : {},
+                    },
+                    undefined,
+                    { shallow: true }
+                  )
+                }
+              }}
+            />
+            <Button onClick={() => setShowSearch(false)} ariaLabel="Close search">
+              <Close />
+            </Button>
+          </label>
+        </div>
+      </header>
+    </>
   )
 }
 
