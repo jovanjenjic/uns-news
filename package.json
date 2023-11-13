@@ -63,6 +63,7 @@
     "react-markdown": "^5.0.3"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.2.11",
     "@types/gtag.js": "^0.0.4",
