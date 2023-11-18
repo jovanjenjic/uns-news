@@ -40,17 +40,17 @@ const ArticlesHero = ({
 
           <section className="pt-8">
             {mainArticle?.categories.map((category) => (
-              <>
+              <div key={category?.slug}>
                 <Link href={`/${category.slug}`}>
                   <a className="uppercase text-sm font-bold px-2 py-1 bg-accent text-secondary border border-secondary rounded-sm hover:underline">
                     {category.title}
                   </a>
                 </Link>
                 <span className="mx-3 text-accent">|</span>
-              </>
+              </div>
             ))}
             {mainArticle?.faculties.map((fax, index) => (
-              <>
+              <div key={fax?.slug}>
                 <Link href={`/faculties/${fax.slug}`}>
                   <a className="uppercase text-sm font-bold px-2 py-1 bg-accent text-secondary border border-secondary rounded-sm hover:underline">
                     {fax?.shortTitle || fax.title}
@@ -59,7 +59,7 @@ const ArticlesHero = ({
                 {index !== mainArticle?.faculties?.length - 1 && (
                   <span className="mx-3 text-accent">|</span>
                 )}
-              </>
+              </div>
             ))}
             <Link href={`/articles/${mainArticle?.slug}`}>
               <a>

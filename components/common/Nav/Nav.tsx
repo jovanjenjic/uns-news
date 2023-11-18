@@ -38,7 +38,7 @@ const Nav = ({
           : val
     }
 
-    return `/${url}`
+    return `/${url === '/' ? '' : url}`
   }
 
   return (
@@ -72,7 +72,7 @@ const Nav = ({
           <p
             className={cn(
               'cursor-pointer uppercase py-2 px-4 text-xs font-bold',
-              slug === item.slug || subSlug === item.slug
+              slug === item.slug || subSlug === item?.slug
                 ? 'text-accent'
                 : 'text-white-primary'
             )}

@@ -56,20 +56,20 @@ const ArticleCardTop = ({ article, index }: Props) => {
           </p>
           <span className="mx-3 text-accent">|</span>
           {article.categories.map((category) => (
-            <>
+            <div key={category?.slug}>
               <Link href={`/${category.slug}`}>
                 <a className="text-accent hover:underline">{category.title}</a>
               </Link>
               <span className="mx-3 text-accent">|</span>
-            </>
+            </div>
           ))}
           {article.faculties.map((fax) => (
-            <>
+            <div key={fax?.slug}>
               <Link href={`/faculties/${fax.slug}`}>
                 <a className="text-accent hover:underline">{fax.title}</a>
               </Link>
               <span className="mx-3 text-accent">|</span>
-            </>
+            </div>
           ))}
           <Date date={article.published_at as string} />
         </div>

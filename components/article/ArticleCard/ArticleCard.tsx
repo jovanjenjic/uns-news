@@ -35,17 +35,17 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
 
       <section className="pt-4">
         {article.categories.map((category) => (
-          <>
+          <div key={category?.slug}>
             <Link href={`/${category.slug}`}>
               <a className="uppercase text-sm font-bold text-accent hover:underline">
                 {category.title}
               </a>
             </Link>
             <span className="mx-3 text-accent">|</span>
-          </>
+          </div>
         ))}
         {article.faculties.map((fax, index) => (
-          <>
+          <div key={fax?.slug}>
             <Link href={`/faculties/${fax.slug}`}>
               <a className="uppercase text-sm font-bold text-accent hover:underline">
                 {fax.title}
@@ -54,7 +54,7 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
             {index !== article.faculties.length - 1 && (
               <span className="mx-3 text-accent">|</span>
             )}
-          </>
+          </div>
         ))}
 
         <Link href={`/articles/${article.slug}`}>
