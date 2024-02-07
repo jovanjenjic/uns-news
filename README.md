@@ -1,7 +1,5 @@
 # Digital Magazine Starter Kit
 
-#### Live demo: [https://magazine-starter.vercel.app](https://magazine-starter.vercel.app)
-
 This starter allows you to clone and deploy a fully customizable Digital Magazine in just a few clicks.
 
 <p align="center">
@@ -36,17 +34,8 @@ This starter allows you to clone and deploy a fully customizable Digital Magazin
   - [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers) for offline support.
   - [IndexedDB](https://developers.google.com/web/ilt/pwa/working-with-indexeddb) for save articles.
 
-## Integrations
-
-This project integrates out-of-the-box with [Magazine Strapi CMS](https://github.com/edgarlr/magazine-api).
-
-## Getting started
-
-Create your own copy of this project by clicking the ["Use this template"](https://github.com/edgarlr/magazine/generate) button and filling the form.
 
 ### Running locally
-
-First, you'll need to have the [Magazine Strapi CMS](https://github.com/edgarlr/magazine-api) running at [http://localhost:1337](http://localhost:1337). You can follow the instructions on that repo to set it up and get it running.
 
 Then, create a folder and `git clone` from your copy of this repository.
 
@@ -60,7 +49,6 @@ Install the dependencies and start the dev server.
 The dev server will run on [http://localhost:3000](http://localhost:3000). If it doesn't work make shure that:
 
 - You've added sample data to Strapi (Contributors, categories and articles are necessary)
-- You've set the Roles & Permissions to `find`on Contributors, Categories, articles and pages. (More info on [Magazine Strapi CMS](https://github.com/edgarlr/magazine-api) running locally instructions.)
 - You've set the `status` of each article and page to be `published`
 
 ### Preview mode
@@ -143,8 +131,6 @@ You'll need to deploy your Strapi CMS first and have your api URL.
 
 Click this button below to clone and deploy this project on [vercel](https://vercel.com).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world&env=API_URL,PREVIEW_SECRET,GA_MEASUREMENT_ID&envDescription=API%20Keys%20needed%20for%20the%20application%2C%20preview%20mode%20and%20google%20analytics&envLink=https%3A%2F%2Fgithub.com%2Fedgarlr%2Fmagazine%23preview-mode&project-name=magazine&repo-name=magazine&demo-title=Digital%20Magazine&demo-description=All-in-one%20digital%20magazine%20starter%20kit.&demo-url=https%3A%2F%2Fmagazine-starter.vercel.app&demo-image=https%3A%2F%2Fres.cloudinary.com%2Fdliiwavlg%2Fimage%2Fupload%2Fv1615997486%2FScreen_Shot_2021-03-17_at_10.10.22_jle2xq.png)
-
 Or you can take a look at the docs to [deploy Next.js](https://nextjs.org/docs/deployment).
 
 Don't forget to update your environment variables:
@@ -173,5 +159,3 @@ The sitemap will be generated dynamically using the `lib/constants` info but you
 Due heroku sleep problem the search hook is really slow. If you're gonna deploy the strapi cms to any platform other than heroku you can uncomment the seach hook and it should work fine. Otherwise, to prevent a slow search, the page will be statically genarated with **ALL** the published articles and run a local search instead.
 
 ## License
-
-[MIT License](https://github.com/edgarlr/magazine/blob/main/LICENSE).
