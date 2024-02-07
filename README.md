@@ -1,4 +1,4 @@
-# Digital Magazine Starter Kit
+# Studentski Fokus
 
 This starter allows you to clone and deploy a fully customizable Digital Magazine in just a few clicks.
 
