@@ -34,7 +34,7 @@ const Footer = ({ navigation }: Props) => {
         <div>
           <h3 className={s.heading}>Факултети</h3>
           <ul className={s.ul}>
-            {navigation?.faculties.map((fax) => (
+            {navigation?.faculties.length && navigation?.faculties.map((fax) => (
               <li key={fax.slug}>
                 <Link href={`/faculties/${fax.slug}`}>
                   <a className={s.link}>{fax.title}</a>
