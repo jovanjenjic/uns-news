@@ -1,6 +1,6 @@
 export function getStrapiURL(path: string) {
   return `${
-    'http://localhost:1337' || 'https://strapi-uns-news.onrender.com'
+    'https://strapi-uns-news.onrender.com' || 'http://localhost:1337'
   }${path}`
 }
 
