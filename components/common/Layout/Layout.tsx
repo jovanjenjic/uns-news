@@ -24,7 +24,7 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
 
   return (
     <>
-      <Header />
+      <Header faculties={navigation.faculties} />
       {navigation && (
         <Nav
           list={navigation.faculties}
