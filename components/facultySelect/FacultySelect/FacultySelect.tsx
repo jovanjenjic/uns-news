@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from 'react'
-import styles from './Select.module.css'
+import styles from './FacultySelect.module.css'
 import { useRouter } from 'next/router'
 
 function FacultySelect({ faculties }: { faculties: TFaculty[] }) {
