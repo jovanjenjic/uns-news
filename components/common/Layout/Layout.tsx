@@ -24,14 +24,7 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
 
   return (
     <>
-      <Header />
-      {navigation && (
-        <Nav
-          list={navigation.faculties}
-          isFaculty={true}
-          allText="SVI FAKULTET"
-        />
-      )}
+      <Header faculties={navigation.faculties} />
       {navigation && (
         <Nav
           list={navigation.categories}

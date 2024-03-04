@@ -17,7 +17,10 @@ const Nav = ({
   const { slug, subSlug } = router.query
 
   const findElementInCurrentList = (slugOrSubSlug: string): boolean => {
-    return list.length && !!list?.map((item) => item.slug).find((val) => val === slugOrSubSlug)
+    return (
+      list.length &&
+      !!list?.map((item) => item.slug).find((val) => val === slugOrSubSlug)
+    )
   }
 
   const navigateOnNewPage = (val: string): string => {
@@ -44,9 +47,9 @@ const Nav = ({
   return (
     <nav
       aria-label="Categories Nav"
+      style={{ top: '80px' }}
       className={cn(
-        'bg-blue-primary overflow-x-scroll fixed w-full flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
-        isFaculty ? 'top-20' : 'top-112px',
+        'bg-blue-primary overflow-x-scroll fixed w-full flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300 ',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
@@ -67,20 +70,21 @@ const Nav = ({
           {allText}
         </p>
       </Link>
-      {list.length && list?.map((item) => (
-        <Link href={navigateOnNewPage(item.slug)} key={item.slug}>
-          <p
-            className={cn(
-              'cursor-pointer uppercase py-2 px-4 text-xs font-bold',
-              slug === item.slug || subSlug === item?.slug
-                ? 'text-accent'
-                : 'text-white-primary'
-            )}
-          >
-            {item.title}
-          </p>
-        </Link>
-      ))}
+      {list.length &&
+        list?.map((item) => (
+          <Link href={navigateOnNewPage(item.slug)} key={item.slug}>
+            <p
+              className={cn(
+                'cursor-pointer uppercase py-2 px-4 text-xs font-bold',
+                slug === item.slug || subSlug === item?.slug
+                  ? 'text-accent'
+                  : 'text-white-primary'
+              )}
+            >
+              {item.title}
+            </p>
+          </Link>
+        ))}
     </nav>
   )
 }

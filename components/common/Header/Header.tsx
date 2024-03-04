@@ -15,8 +15,9 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
 import HamburgerMenu from '@components/hamburger/Hamburger'
+import FacultySelect from '@components/facultySelect/FacultySelect/FacultySelect'
 
-const Header = () => {
+const Header = ({ faculties }: { faculties: TFaculty[] }) => {
   const router = useRouter()
   const [showSearch, setShowSearch] = useState(false)
   const isMobile = useIsMobile()
@@ -54,6 +55,10 @@ const Header = () => {
               height={42}
             />
           </Link>
+        </div>
+        <div>
+          {' '}
+          <FacultySelect faculties={faculties} />
         </div>
         <div className="flex">
           <Button onClick={() => setShowSearch(true)} ariaLabel="Search">
