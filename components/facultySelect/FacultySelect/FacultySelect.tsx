@@ -1,16 +1,24 @@
 import React, { useState, ChangeEvent } from 'react'
+import styles from './Select.module.css'
+import { useRouter } from 'next/router'
 
 function FacultySelect({ faculties }: { faculties: TFaculty[] }) {
   const [selectedFaculty, setSelectedFaculty] = useState<string>('')
+  const router = useRouter()
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value
     setSelectedFaculty(value)
+    router.push(`/${value}`)
   }
 
   return (
-    <select value={selectedFaculty} onChange={handleChange}>
-      <option value="">Odaberite fakultet</option>
+    <select
+      className={styles.select}
+      value={selectedFaculty}
+      onChange={handleChange}
+    >
+      <option value="">Одаберите факултет</option>
       {faculties.map((faculty: TFaculty) => (
         <option key={faculty.id} value={faculty.slug}>
           {faculty.title}
