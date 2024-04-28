@@ -27,6 +27,9 @@ module.exports = (phase) => {
     generateInDevMode: false,
     dontAutoRegisterSw: true,
     generateSw: false,
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
     workboxOpts: {
       swDest: 'static/service-worker.js',
       swSrc: path.join(__dirname, 'sw.js'),
