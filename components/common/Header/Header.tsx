@@ -14,7 +14,7 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
-import HamburgerMenu from '@components/hamburger/Hamburger'
+// import HamburgerMenu from '@components/hamburger/Hamburger'
 
 const Header = () => {
   const router = useRouter()
@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <>
-      <HamburgerMenu />
+      {/* <HamburgerMenu /> */}
       <header
         ref={searchRef}
         className="bg-blue-primary text-white-primary fixed h-20 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
