@@ -112,7 +112,7 @@ function ArticlePage({
           // This will break disabling Strapi Image Optimization
           images={
             article?.cover
-              ? Object.values(article?.cover?.formats).map((image) => {
+              ? Object.values(article?.cover?.formats || []).map((image) => {
                   return getMediaURL(image?.url)
                 })
               : []
