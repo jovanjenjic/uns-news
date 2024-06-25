@@ -14,9 +14,9 @@ const ArticleCardTop = ({ article, index }: Props) => {
   return (
     <article className={s.top}>
       <div className={s.topNumber}>{index + 1}</div>
-      <div className="lg:flex hidden mr-4">
+      <div className="lg:flex mr-4 w-32">
         <Link href={`/articles/${article.slug}`}>
-          <a aria-label={`Link to ${article.title}`} className={s.cover}>
+          <a aria-label={`Link to ${article.title}`} className={`flex ${s.cover}`}>
             {(article?.cover?.formats?.medium?.url || article?.cover?.url) && (
               <Image
                 src={getMediaURL(
@@ -24,43 +24,48 @@ const ArticleCardTop = ({ article, index }: Props) => {
                 )}
                 alt={article.cover.alternativeText || ''}
                 className="object-cover"
-                width={100}
-                height={90}
+                width={256}
+                height={256}
               />
             )}
           </a>
         </Link>
       </div>
       <section>
+        <div className="flex w-full text-xs leading-3">
+          <Link href={`/contributors/${article.author.slug}`}>
+            <a className="pl-0.5 font-semibold hover:underline">
+              {article.author.name}
+            </a>
+          </Link>
+          <span className="mx-1 font-normal">|</span>
+          <Date date={article.published_at as string} className="leading-3" />
+        </div>
         <Link href={`/articles/${article.slug}`}>
           <a>
             <h3
               className={cn(
                 s.title,
-                'serif leading-tight overflow-hidden max-h-28 mb-3 hover:underline text-xl'
+                'serif leading-tight overflow-hidden max-h-28 mt-1 mb-2 hover:underline text-xl'
               )}
+              style={{ display: '-webkit-box',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: 2,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'}}
             >
               {article.title}
             </h3>
           </a>
         </Link>
 
-        <div className="text-sm flex flex-wrap">
-          <p>
-            Аутор
-            <Link href={`/contributors/${article.author.slug}`}>
-              <a className="pl-1 font-bold hover:underline">
-                {article.author.name}
-              </a>
-            </Link>
-          </p>
-          <span className="mx-3 text-accent">|</span>
+        <div className="text-xs flex flex-wrap">
           {article.categories.map((category) => (
             <div key={category?.slug}>
               <Link href={`/${category.slug}`}>
                 <a className="text-accent hover:underline">{category.title}</a>
               </Link>
-              <span className="mx-3 text-accent">|</span>
+              <span className="mx-2 text-accent">|</span>
             </div>
           ))}
           {article.faculties.map((fax) => (
@@ -68,10 +73,10 @@ const ArticleCardTop = ({ article, index }: Props) => {
               <Link href={`/faculties/${fax.slug}`}>
                 <a className="text-accent hover:underline">{fax.title}</a>
               </Link>
-              <span className="mx-3 text-accent">|</span>
+              <span className="mx-2 text-accent">|</span>
             </div>
           ))}
-          <Date date={article.published_at as string} />
+          
         </div>
       </section>
     </article>

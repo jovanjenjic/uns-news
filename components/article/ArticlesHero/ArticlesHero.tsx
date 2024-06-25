@@ -15,8 +15,8 @@ const ArticlesHero = ({
   mainArticle?: TArticle
 }) => {
   return (
-    <section className="mb-4 flex justify-between items-center">
-      <div style={{ width: '45%' }}>
+    <section className="mb-4 flex justify-between items-start gap-x-12">
+      <div className="flex flex-col flex-1 py-2">
         <article className={s.hero}>
           <Link href={`/articles/${articles?.[0]?.slug}`}>
             <a aria-label={`Link to ${articles?.[0]?.title}`}>
@@ -38,36 +38,41 @@ const ArticlesHero = ({
             </a>
           </Link>
 
-          <section className="pt-8">
+          <section className="pt-8 flex flex-wrap gap-y-1 gap-x-2">
             {mainArticle?.categories.map((category) => (
-              <div key={category?.slug}>
+              <div key={category?.slug} className="flex gap-x-2">
                 <Link href={`/${category.slug}`}>
-                  <a className="uppercase text-sm font-bold px-2 py-1 bg-accent text-secondary border border-secondary rounded-sm hover:underline">
+                  <a className="uppercase text-sm font-bold px-2 py-1 leading-4 bg-accent text-secondary rounded-sm hover:underline">
                     {category.title}
                   </a>
                 </Link>
-                <span className="mx-3 text-accent">|</span>
+                <span className="text-accent mt-1 leading-4">|</span>
               </div>
             ))}
             {mainArticle?.faculties.map((fax, index) => (
-              <div key={fax?.slug}>
+              <div key={fax?.slug} className="flex gap-x-2">
                 <Link href={`/faculties/${fax.slug}`}>
-                  <a className="uppercase text-sm font-bold px-2 py-1 bg-accent text-secondary border border-secondary rounded-sm hover:underline">
+                  <a className="uppercase text-sm font-bold px-2 py-1 leading-4 bg-accent text-secondary rounded-sm hover:underline">
                     {fax?.shortTitle || fax.title}
                   </a>
                 </Link>
                 {index !== mainArticle?.faculties?.length - 1 && (
-                  <span className="mx-3 text-accent">|</span>
+                  <span className="text-accent mt-1 leading-4">|</span>
                 )}
               </div>
             ))}
             <Link href={`/articles/${mainArticle?.slug}`}>
-              <a>
+              <a className="min-w-full">
                 <h3
                   className={cn(
                     s.title,
                     'serif leading-tight overflow-hidden max-h-28 mt-4 mb-2 hover:underline'
                   )}
+                  style={{ display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 2,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'}}
                 >
                   {mainArticle?.title}
                 </h3>
@@ -84,6 +89,7 @@ const ArticlesHero = ({
               <Date
                 className="px-2"
                 date={mainArticle?.published_at as string}
+                style={{lineHeight: `unset` }}
               />
             </div>
           </section>
@@ -91,7 +97,7 @@ const ArticlesHero = ({
         </article>
       </div>
 
-      <div style={{ width: '45%' }}>
+      <div className="flex flex-col flex-1">
         {articles.map((article, index) => (
           <ArticleCardTop article={article} index={index} key={article.slug} />
         ))}
