@@ -28,7 +28,7 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
         {article.categories.map((category) => (
           <>
             <Link href={`/${category.slug}`}>
-              <a className="uppercase text-sm font-bold text-accent hover:underline">
+              <a className="uppercase text-sm font-italic text-accent hover:underline">
                 {category.title}
               </a>
             </Link>
