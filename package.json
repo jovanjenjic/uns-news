@@ -12,7 +12,7 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
-    "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --fix",
+    "lint:fix": "next lint --fix",
     "format": "prettier . --write",
     "find:unused": "next-unused",
     "prepare": "husky install"
