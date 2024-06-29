@@ -29,7 +29,7 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
         <Nav
           list={navigation.faculties}
           isFaculty={true}
-          allText="SVI FAKULTET"
+          allText="СВИ ФАКУЛТЕТИ"
         />
       )}
       {navigation && (
@@ -39,14 +39,6 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
           allText="СВЕ КАТЕГОРИЈЕ"
         />
       )}
-      {/* <main
-        className={cn(
-          'min-h-screen px-4 pt-40 pb-20 flex flex-col mx-auto md:w-3/4',
-          isMarkdown ? 'lg:w-7/12' : 'lg:w-2/3 xl:w-8/12'
-        )}
-      >
-        {children}
-      </main> */}
       <main
         className={cn(
           'min-h-screen px-4 pt-40 pb-20 flex flex-col mx-auto w-full  md:px-8 lg:px-12 xl:px-16 2xl:px-20',

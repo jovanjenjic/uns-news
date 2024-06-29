@@ -16,7 +16,10 @@ const ArticleCardTop = ({ article, index }: Props) => {
       <div className={s.topNumber}>{index + 1}</div>
       <div className="lg:flex mr-4 w-32">
         <Link href={`/articles/${article.slug}`}>
-          <a aria-label={`Link to ${article.title}`} className={`flex ${s.cover}`}>
+          <a
+            aria-label={`Link to ${article.title}`}
+            className={`flex ${s.cover}`}
+          >
             {(article?.cover?.formats?.medium?.url || article?.cover?.url) && (
               <Image
                 src={getMediaURL(
@@ -48,11 +51,13 @@ const ArticleCardTop = ({ article, index }: Props) => {
                 s.title,
                 'serif leading-tight overflow-hidden max-h-28 mt-1 mb-2 hover:underline text-xl'
               )}
-              style={{ display: '-webkit-box',
+              style={{
+                display: '-webkit-box',
                 WebkitBoxOrient: 'vertical',
                 WebkitLineClamp: 2,
                 overflow: 'hidden',
-                textOverflow: 'ellipsis'}}
+                textOverflow: 'ellipsis',
+              }}
             >
               {article.title}
             </h3>
@@ -76,7 +81,6 @@ const ArticleCardTop = ({ article, index }: Props) => {
               <span className="mx-2 text-accent">|</span>
             </div>
           ))}
-          
         </div>
       </section>
     </article>

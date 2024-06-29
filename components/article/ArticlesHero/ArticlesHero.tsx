@@ -68,11 +68,13 @@ const ArticlesHero = ({
                     s.title,
                     'serif leading-tight overflow-hidden max-h-28 mt-4 mb-2 hover:underline'
                   )}
-                  style={{ display: '-webkit-box',
+                  style={{
+                    display: '-webkit-box',
                     WebkitBoxOrient: 'vertical',
                     WebkitLineClamp: 2,
                     overflow: 'hidden',
-                    textOverflow: 'ellipsis'}}
+                    textOverflow: 'ellipsis',
+                  }}
                 >
                   {mainArticle?.title}
                 </h3>
@@ -89,7 +91,7 @@ const ArticlesHero = ({
               <Date
                 className="px-2"
                 date={mainArticle?.published_at as string}
-                style={{lineHeight: `unset` }}
+                style={{ lineHeight: `unset` }}
               />
             </div>
           </section>

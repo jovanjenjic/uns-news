@@ -34,7 +34,6 @@ This starter allows you to clone and deploy a fully customizable Digital Magazin
   - [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers) for offline support.
   - [IndexedDB](https://developers.google.com/web/ilt/pwa/working-with-indexeddb) for save articles.
 
-
 ### Running locally
 
 Then, create a folder and `git clone` from your copy of this repository.

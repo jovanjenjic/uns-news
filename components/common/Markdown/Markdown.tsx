@@ -22,6 +22,7 @@ const ImageRenderer = ({ src, alt }: { src: string; alt: string }) => {
         <Image src={srcUrl} alt={alt} layout="fill" objectFit="contain" />
       ) : (
         // Regular img tag whenever the image came from a different domain or source
+        // eslint-disable-next-line @next/next/no-img-element
         <img src={srcUrl} alt={alt} style={{ objectFit: 'contain' }} />
       )}
       <figcaption

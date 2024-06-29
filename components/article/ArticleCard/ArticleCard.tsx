@@ -64,11 +64,13 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
                 s.title,
                 'serif leading-tight overflow-hidden max-h-28 hover:underline'
               )}
-              style={{ display: '-webkit-box',
+              style={{
+                display: '-webkit-box',
                 WebkitBoxOrient: 'vertical',
                 WebkitLineClamp: 2,
                 overflow: 'hidden',
-                textOverflow: 'ellipsis'}}
+                textOverflow: 'ellipsis',
+              }}
             >
               {article.title}
             </h3>
@@ -80,7 +82,10 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
             <a className="font-bold hover:underline">{article.author.name}</a>
           </Link>
         </div>
-        <Date className="leading-3 mt-2" date={article.published_at as string} />
+        <Date
+          className="leading-3 mt-2"
+          date={article.published_at as string}
+        />
       </section>
     </article>
   )

@@ -44,8 +44,6 @@
   }
 }
 
-
-
 .hero {
   @apply relative cursor-pointer transition-transform transform scale-100;
   & .cover {

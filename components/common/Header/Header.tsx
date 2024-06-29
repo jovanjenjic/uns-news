@@ -51,7 +51,8 @@ const Header = () => {
               src="/img/Logo.png"
               alt="logo"
               width={190}
-              height={42}
+              height={52}
+              objectFit='contain'
             />
           </Link>
         </div>
