@@ -48,7 +48,7 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
           <div key={fax?.slug} className="flex gap-x-2">
             <Link href={`/faculties/${fax.slug}`}>
               <a className="uppercase text-xs md:text-sm font-bold text-accent hover:underline">
-                {fax.title}
+                {fax?.shortTitle || fax.title}
               </a>
             </Link>
             {index !== article.faculties.length - 1 && (

@@ -40,7 +40,7 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
           <>
             <Link href={`/${fax.slug}`}>
               <a className="uppercase text-sm font-bold text-accent hover:underline">
-                {fax.title}
+                {fax?.shortTitle || fax.title}
               </a>
             </Link>
             {index !== article.faculties.length - 1 && (
