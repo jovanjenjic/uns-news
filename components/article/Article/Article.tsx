@@ -36,7 +36,7 @@ function Article({ article }: { article: TArticle | undefined }) {
           </>
         ))}
 
-        <h1 className="serif pb-4">{article.title}</h1>
+        <h1 className="serif pb-4 text-3xl md:text-4xl">{article.title}</h1>
 
         <p className="mb-2">
           Аутор{' '}
@@ -49,15 +49,16 @@ function Article({ article }: { article: TArticle | undefined }) {
 
         <ActionButtons article={article} />
 
-        <div className="my-8">
+        <div className="flex my-8" style={{maxHeight: '25svh', minHeight: '180px'}}>
           {(article?.cover?.formats?.medium?.url || article?.cover?.url) && (
             <Image
               src={getMediaURL(
                 article?.cover?.formats?.medium?.url || article?.cover?.url
               )}
               alt={article.cover.alternativeText || ''}
-              width={article.cover.width}
-              height={article.cover.height}
+              width={1920}
+              height={1080}
+              objectFit='cover'
             />
           )}
         </div>

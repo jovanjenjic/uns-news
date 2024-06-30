@@ -41,7 +41,7 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
       )}
       <main
         className={cn(
-          'min-h-screen px-4 pt-40 pb-20 flex flex-col mx-auto w-full  md:px-8 lg:px-12 xl:px-16 2xl:px-20',
+          'min-h-screen px-3 pt-40 pb-20 flex flex-col mx-auto w-full  md:px-8 lg:px-12 xl:px-16 2xl:px-20',
           isMarkdown ? 'max-w-screen-lg' : 'max-w-screen-2xl'
         )}
       >
