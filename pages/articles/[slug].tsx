@@ -1,13 +1,13 @@
 import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { Article } from '@components/article'
 import { ArticleJsonLd, NextSeo } from 'next-seo'
 import ExitPreviewButton from '@components/common/ExitPreviewButton'
 import { Layout } from '@components/common/Layout'
-import ArrowLeft from '@components/icons/ArrowLeft'
-import Custom404 from 'pages/404'
-import { Button } from '@components/ui/Button'
+// import ArrowLeft from '@components/icons/ArrowLeft'
+// import Custom404 from 'pages/404'
+// import { Button } from '@components/ui/Button'
 import { SITE_LOGO, SITE_NAME, SITE_URL } from '@lib/constants'
 
 export async function getStaticPaths() {
@@ -52,15 +52,15 @@ function ArticlePage({
   preview,
   navigation,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { isFallback, back } = useRouter()
+  // const { isFallback, back } = useRouter()
 
-  const handleGoBack = () => {
-    back()
-  }
+  // const handleGoBack = () => {
+  //   back()
+  // }
 
-  if (!isFallback && !article) {
-    return <Custom404 />
-  }
+  // if (!isFallback && !article) {
+  //   return <Custom404 />
+  // }
 
   const fullURL = `${SITE_URL}/articles/${article?.slug}`
 
@@ -119,9 +119,9 @@ function ArticlePage({
           }
         />
 
-        <Button ariaLabel="Go back" onClick={handleGoBack} className="-ml-2">
+        {/* <Button ariaLabel="Go back" onClick={handleGoBack} className="-ml-2">
           <ArrowLeft />
-        </Button>
+        </Button> */}
         <Article article={article} />
         {preview && <ExitPreviewButton />}
       </Layout>
