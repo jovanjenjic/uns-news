@@ -24,7 +24,7 @@
 
 @media screen and (min-width: 1024px) {
   .default {
-    @apply flex flex-row-reverse items-center justify-between gap-20 cursor-pointer mx-auto w-full py-5 px-2;
+    @apply flex flex-row-reverse items-center justify-between gap-20 cursor-pointer mx-auto w-full py-5 px-2 hover:bg-hover;
     & .cover {
       flex: 0.8;
       @apply relative lg:pb-1/4;
@@ -36,7 +36,7 @@
   }
 
   .top {
-    @apply px-0;
+    @apply px-1.5 hover:bg-hover;
     & .topNumber {
       flex: 0.125;
       @apply flex text-2xl font-bold text-primary-20;

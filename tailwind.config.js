@@ -28,7 +28,13 @@ module.exports = {
       },
       secondary: 'var(--secondary)',
       'black-a-30': 'var(--black-a-30)',
-      accent: 'var(--accent)',
+      accent: {
+        DEFAULT: 'var(--accent)',
+        10: 'var(--accent-10)',
+      },
+      hover: {
+        DEFAULT: 'var(--hover-prim)',
+      },
       'blue-primary': 'var(--blue-primary)',
       'white-primary': 'var(--white-primary)',
     },
