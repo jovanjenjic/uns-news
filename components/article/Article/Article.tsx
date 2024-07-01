@@ -49,7 +49,7 @@ function Article({ article }: { article: TArticle | undefined }) {
 
         <ActionButtons article={article} />
 
-        <div className="flex my-8" style={{maxHeight: '25svh', minHeight: '180px'}}>
+        <div className="flex my-8" style={{maxHeight: '35svh', minHeight: '180px'}}>
           {(article?.cover?.formats?.medium?.url || article?.cover?.url) && (
             <Image
               src={getMediaURL(

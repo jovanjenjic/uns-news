@@ -37,7 +37,7 @@ const ImageRenderer = ({ src, alt }: { src: string; alt: string }) => {
 
 const Markdown = ({ content }: { content?: string }) => {
   return (
-    <section className="markdown">
+    <section className="markdown text-justify break-words">
       <ReactMarkdown
         renderers={{ image: ImageRenderer, paragraph: ParagraphRenderer }}
       >
