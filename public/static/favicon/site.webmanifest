@@ -4,7 +4,7 @@
   "description": "Студентска апликација за оглашавање и информисање",
   "display": "standalone",
   "start_url": "/",
-  "theme_color": "#ffffff",
+  "theme_color": "#e18624",
   "background_color": "#ffffff",
   "orientation": "portrait",
   "icons": [
