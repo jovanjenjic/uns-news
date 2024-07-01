@@ -16,6 +16,7 @@
   --black: #121212;
   --black-a-30: rgba(0, 0, 0, 0.3);
   --orange: #e18624;
+  --orange-10: #fefbf6;
   --blue: #1a2f52;
 
   /* Theme Colors */
@@ -31,8 +32,10 @@
   --primary-05: var(--gray-05);
   --secondary: var(--white);
   --accent: var(--orange);
+  --accent-10: var(--orange-10);
   --blue-primary: var(--blue);
   --white-primary: var(--white);
+  --hover-prim: var(--gray-05);
 }
 
 [data-theme='dark'] {
@@ -48,8 +51,10 @@
   --primary-05: var(--gray-95);
   --secondary: var(--black);
   --accent: var(--orange);
+  --accent-10: var(--orange-10);
   --blue-primary: var(--black);
   --white-primary: var(--white);
+  --hover-prim: var(--gray-95);
 }
 
 *,

@@ -76,7 +76,9 @@ const ArticleCardTop = ({ article, index }: Props) => {
           {article.faculties.map((fax) => (
             <div key={fax?.slug}>
               <Link href={`/faculties/${fax.slug}`}>
-                <a className="text-accent hover:underline">{fax?.shortTitle || fax.title}</a>
+                <a className="text-accent hover:underline">
+                  {fax?.shortTitle || fax.title}
+                </a>
               </Link>
               <span className="mx-2 text-accent">|</span>
             </div>

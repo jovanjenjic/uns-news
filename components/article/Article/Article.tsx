@@ -5,13 +5,31 @@ import { Date } from '@components/ui/Date'
 import ActionButtons from './ActionButtons'
 import { getMediaURL } from '@lib/api'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { Button } from '@components/ui/Button'
+import ArrowLeft from '@components/icons/ArrowLeft'
 
 function Article({ article }: { article: TArticle | undefined }) {
+  const { back } = useRouter()
+
+  const handleGoBack = () => {
+    back()
+  }
+
   if (!article) return <p>Something went wrong</p>
 
   return (
     <article>
-      <header className="pb-10 pt-4">
+      <header className="pb-10 pt-1">
+        <div className="flex flex-1 flex-row justify-between relative pb-2">
+          <Button ariaLabel="Go back" onClick={handleGoBack} className="-ml-2">
+            <ArrowLeft />
+          </Button>
+          <div className="absolute -right-2">
+            <ActionButtons article={article} />
+          </div>
+        </div>
+
         {article.categories.map((category) => (
           <>
             <Link href={`/${category.slug}`}>
@@ -36,20 +54,22 @@ function Article({ article }: { article: TArticle | undefined }) {
           </>
         ))}
 
-        <h1 className="serif pb-4 text-3xl md:text-4xl">{article.title}</h1>
+        <h1 className="serif pb-2 text-3xl md:text-4xl">{article.title}</h1>
 
-        <p className="mb-2">
-          Аутор{' '}
-          <Link href={`/contributors/${article.author.slug}`}>
-            <a className="font-bold">{article.author.name}</a>
-          </Link>
-        </p>
+        <div className="flex flex-1 flex-row justify-between pr-0.5">
+          <p className="pb-2">
+            Аутор{' '}
+            <Link href={`/contributors/${article.author.slug}`}>
+              <a className="font-bold">{article.author.name}</a>
+            </Link>
+          </p>
+          <Date date={article.published_at as string} />
+        </div>
 
-        <Date date={article.published_at as string} />
-
-        <ActionButtons article={article} />
-
-        <div className="flex my-8" style={{maxHeight: '25svh', minHeight: '180px'}}>
+        <div
+          className="flex my-4"
+          style={{ maxHeight: '35svh', minHeight: '180px' }}
+        >
           {(article?.cover?.formats?.medium?.url || article?.cover?.url) && (
             <Image
               src={getMediaURL(
@@ -58,7 +78,7 @@ function Article({ article }: { article: TArticle | undefined }) {
               alt={article.cover.alternativeText || ''}
               width={1920}
               height={1080}
-              objectFit='cover'
+              objectFit="cover"
             />
           )}
         </div>
