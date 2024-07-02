@@ -41,7 +41,7 @@ function Home({
             mainArticle={mainArticle}
           />
         )}
-
+  
         <ArticlesList articles={articles.slice(4, 10)} title="НАЈНОВИЈЕ" />
 
         <div className="lg:py-24 lg:flex lg:w-full lg:gap-28 lg:mx-auto">

@@ -1,5 +1,5 @@
 .default {
-  @apply cursor-pointer border-b relative flex flex-col justify-between gap-2 cursor-pointer mx-auto w-full py-10 px-2;
+  @apply border-b relative flex flex-col justify-between gap-2 mx-auto w-full py-10 px-2;
   & .cover {
     @apply relative pb-1/4 w-full xl:pb-2/5;
     flex: 1;
@@ -13,7 +13,7 @@
 }
 
 .top {
-  @apply flex py-2 items-center justify-between relative min-w-full cursor-pointer px-1;
+  @apply flex py-2 items-center justify-between relative min-w-full px-1;
   & section {
     flex: 1;
   }
@@ -24,7 +24,7 @@
 
 @media screen and (min-width: 1024px) {
   .default {
-    @apply flex flex-row-reverse items-center justify-between gap-20 cursor-pointer mx-auto w-full py-5 px-2 hover:bg-hover;
+    @apply flex flex-row-reverse items-center justify-between gap-20 mx-auto w-full py-5 px-2 hover:bg-hover;
     & .cover {
       flex: 0.8;
       @apply relative lg:pb-1/4;
@@ -45,7 +45,7 @@
 }
 
 .hero {
-  @apply relative cursor-pointer transition-transform transform scale-100;
+  @apply relative transition-transform transform scale-100;
   & .cover {
     @apply relative pb-3/5 w-full;
   }
@@ -55,7 +55,7 @@
 }
 
 .lists {
-  @apply cursor-pointer mb-10 py-16 border-b flex flex-row-reverse items-center justify-between relative mx-auto w-full mr-10 md:w-10/12 md:py-12;
+  @apply mb-10 py-16 border-b flex flex-row-reverse items-center justify-between relative mx-auto w-full mr-10 md:w-10/12 md:py-12;
   scroll-snap-align: start;
   & .cover {
     @apply relative pb-2/5 flex-1 xl:pb-1/4;

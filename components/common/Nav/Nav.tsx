@@ -26,20 +26,24 @@ const Nav = ({
   const navigateOnNewPage = (val: string): string => {
     let url = ''
 
-    if (isFaculty) {
-      url = subSlug
-        ? val
-          ? `${val}/${subSlug}`
-          : `${subSlug}`
-        : !findElementInCurrentList(slug as string)
-        ? `${val}/${slug || ''}`
-        : val
-    } else {
-      url =
-        !findElementInCurrentList(slug as string) && slug
-          ? `${slug}/${val}`
-          : val
-    }
+    // TO-DO Feature - Filtering/Sorting News for Faculties (currently disabled)
+    // if (isFaculty) {
+    //   url = subSlug
+    //     ? val
+    //       ? `${val}/${subSlug}`
+    //       : `${subSlug}`
+    //     : !findElementInCurrentList(slug as string)
+    //     ? `${val}/${slug || ''}`
+    //     : val
+    // } else {
+      // url =
+      //   !findElementInCurrentList(slug as string) && slug
+      //     ? `${slug}/${val}`
+      //     : val
+    // }
+
+    // Delete this line if feature above is enabled
+    url = val
 
     return `/${url === '/' ? '' : url}`
   }
@@ -49,9 +53,10 @@ const Nav = ({
       aria-label="Categories Nav"
       className={cn(
         'bg-blue-primary overflow-x-scroll fixed w-full flex whitespace-nowrap px-4 z-10 scrollbar-none transform transition-transform duration-300',
-        isFaculty ? 'top-20' : 'top-112px',
+        isFaculty ? 'hidden' : 'top-20',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
+      style={{scrollbarWidth: 'none'}}
     >
       <Link href={navigateOnNewPage('')}>
         <p

@@ -26,7 +26,7 @@ const Head = () => {
         description={SEO_DESCRIPTION}
         openGraph={{
           type: 'website',
-          locale: 'en_IE',
+          locale: 'sr_RS',
           url: SITE_URL,
           site_name: SITE_NAME,
           images: Object.values(OG_IMAGE).map((image) => {
