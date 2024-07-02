@@ -17,7 +17,7 @@ const ArticlesHero = ({
   return (
     <div className="flex flex-col">
       <div className="mb-4 text-center pb-8 font-serif border-b border-primary-0 uppercase">
-        <h1 className="text-base sm:text-xl md:text-2xl">Студентски информациони сервис Универзитета у Новом Саду</h1>
+        <h1 className="text-base sm:text-xl md:text-2xl">Студентски информативни сервис Универзитета у Новом Саду</h1>
       </div>
     <section className="mb-4 flex justify-between items-start gap-x-12">
      

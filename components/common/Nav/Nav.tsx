@@ -26,6 +26,7 @@ const Nav = ({
   const navigateOnNewPage = (val: string): string => {
     let url = ''
 
+    // TO-DO Feature - Filtering/Sorting News for Faculties (currently disabled)
     // if (isFaculty) {
     //   url = subSlug
     //     ? val
@@ -35,11 +36,14 @@ const Nav = ({
     //     ? `${val}/${slug || ''}`
     //     : val
     // } else {
-      url =
-        !findElementInCurrentList(slug as string) && slug
-          ? `${slug}/${val}`
-          : val
+      // url =
+      //   !findElementInCurrentList(slug as string) && slug
+      //     ? `${slug}/${val}`
+      //     : val
     // }
+
+    // Delete this line if feature above is enabled
+    url = val
 
     return `/${url === '/' ? '' : url}`
   }
