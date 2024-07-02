@@ -15,7 +15,12 @@ const ArticlesHero = ({
   mainArticle?: TArticle
 }) => {
   return (
+    <div className="flex flex-col">
+      <div className="mb-4 text-center pb-8 font-serif border-b border-primary-0 uppercase">
+        <h1 className="text-base sm:text-xl md:text-2xl">Студентски информациони сервис Универзитета у Новом Саду</h1>
+      </div>
     <section className="mb-4 flex justify-between items-start gap-x-12">
+     
       <div className="flex flex-col flex-1 py-2">
         <article className={s.hero}>
           <Link href={`/articles/${articles?.[0]?.slug}`}>
@@ -63,7 +68,7 @@ const ArticlesHero = ({
             ))}
             <Link href={`/articles/${mainArticle?.slug}`}>
               <a className="min-w-full">
-                <h3
+                <h2
                   className={cn(
                     s.title,
                     'serif leading-tight overflow-hidden max-h-28 mt-4 mb-2 hover:underline'
@@ -77,7 +82,7 @@ const ArticlesHero = ({
                   }}
                 >
                   {mainArticle?.title}
-                </h3>
+                </h2>
               </a>
             </Link>
             <div className="flex text-sm">
@@ -105,6 +110,7 @@ const ArticlesHero = ({
         ))}
       </div>
     </section>
+    </div>
   )
 }
 

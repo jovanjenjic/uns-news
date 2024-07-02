@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://magazine-starter.vercel.app/sitemap.xml
+Sitemap: https://studentski-fokus.rs/sitemap.xml

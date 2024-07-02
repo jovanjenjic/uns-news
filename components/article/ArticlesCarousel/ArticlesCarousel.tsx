@@ -11,6 +11,10 @@ const ArticlesCarousel = ({ articles }: Props) => {
   const carouselRef = useRef<HTMLDivElement>(null)
 
   return (
+    <div className="flex flex-col">
+      <div className="mb-4 text-center pb-8 font-serif border-b border-primary-0 uppercase">
+        <h1 className="text-base sm:text-xl md:text-2xl">Студентски информациони сервис Универзитета у Новом Саду</h1>
+      </div>
     <section className="mb-6">
       <div
         ref={carouselRef}
@@ -27,6 +31,7 @@ const ArticlesCarousel = ({ articles }: Props) => {
 
       <ScrollIndicator carouselRef={carouselRef} count={articles.length} />
     </section>
+    </div>
   )
 }
 
