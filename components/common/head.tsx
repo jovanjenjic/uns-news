@@ -39,6 +39,7 @@ const Head = () => {
         }}
         twitter={{
           cardType: 'summary_large_image',
+          site: '@studentskifokus',
         }}
       />
       <NextHead>

@@ -1,15 +1,17 @@
 import { ArticlesList } from '@components/article'
 import { fetchAPI, getMediaURL, getNavigation } from '@lib/api'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import { ArticleJsonLd, NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import ExternalLink from '@components/ui/Link/ExternalLink'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import { Layout } from '@components/common/Layout'
 import Custom404 from 'pages/404'
 import { Markdown } from '@components/common/Markdown'
 import Web from '@components/icons/Web'
 import { Button } from '@components/ui/Button'
 import ArrowLeft from '@components/icons/ArrowLeft'
+import { SITE_LOGO, SITE_NAME, SITE_URL } from '@lib/constants'
 
 export async function getStaticPaths() {
   const slugs: TFaculty[] = await fetchAPI('/faculties')
@@ -44,6 +46,9 @@ function FacultyPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { isFallback, back } = useRouter()
 
+  const fullURL = `${SITE_URL}/faculties/${faculty?.slug}`
+
+
   const handleGoBack = () => {
     back()
   }
@@ -55,16 +60,72 @@ function FacultyPage({
   return (
     <div>
       <Layout navigation={navigation}>
+      <NextSeo
+          title={faculty?.title}
+          description={faculty?.description}
+          canonical={fullURL}
+          openGraph={{
+            title: faculty?.title,
+            description: faculty?.description,
+            url: fullURL,
+            type: 'article',
+            article: {
+              publishedTime: faculty?.published_at as string,
+              modifiedTime: faculty?.updated_at as string,
+              authors: [
+                `Уредник`,
+              ],
+            },
+            // Only include OG image if exists
+            // This will break disabling Strapi Image Optimization
+            ...(faculty?.cover && {
+              images: Object.values(faculty?.cover?.formats || []).map(
+                (image) => {
+                  return {
+                    url: getMediaURL(image?.url),
+                    width: image?.width,
+                    height: image?.height,
+                  }
+                }
+              ),
+            }),
+          }}
+          twitter={{
+            site: '@studentskifokus',
+            cardType: 'summary_large_image'
+          }}
+        />
+        <ArticleJsonLd
+          url={fullURL}
+          title={faculty?.title as string}
+          datePublished={faculty?.published_at as string}
+          dateModified={faculty?.updated_at as string}
+          authorName="Уредник"
+          publisherName={SITE_NAME}
+          publisherLogo={SITE_LOGO}
+          description={faculty?.description as string}
+          // Only include images if exists
+          // This will break disabling Strapi Image Optimization
+          images={
+            faculty?.cover
+              ? Object.values(faculty?.cover?.formats || []).map((image) => {
+                  return getMediaURL(image?.url)
+                })
+              : []
+          }
+        />
         <Button ariaLabel="Go back" onClick={handleGoBack} className="-ml-2">
           <ArrowLeft />
         </Button>
         <section className="text-center py-4">
-          <figure className="relative w-full h-96 mx-auto mb-6">
+          <figure className="relative w-full mx-auto mb-6">
             <Image
               src={getMediaURL(faculty.cover.url)}
               className="object-cover"
               alt={`${faculty?.title} profile`}
-              layout="fill"
+              width={1920}
+              height={1080}
+              style={{aspectRatio: '21/9'}}
             />
           </figure>
           <h1 className="serif mt-0 text-2xl">{faculty?.title}</h1>
