@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import cn from 'classnames'
 import s from './Header.module.css'
 import { useRouter } from 'next/router'
@@ -47,12 +47,11 @@ const Header = () => {
         <div className="ml-12">
           <Link href="/">
             <Image
-              className="cursor-pointer"
+              className="cursor-pointer object-contain"
               src="/img/Logo.png"
               alt="logo"
               width={190}
               height={52}
-              objectFit="contain"
             />
           </Link>
         </div>

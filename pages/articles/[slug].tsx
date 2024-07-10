@@ -56,6 +56,7 @@ function ArticlePage({
         <NextSeo
           title={article?.title}
           description={article?.description}
+          canonical={fullURL}
           openGraph={{
             title: article?.title,
             description: article?.description,
@@ -66,7 +67,7 @@ function ArticlePage({
               modifiedTime: article?.updated_at as string,
               section: `${article?.categories.map((cat) => cat.title)}`,
               authors: [
-                `'https://www.example.com/contributors/'${article?.author.slug}`,
+                `'https://www.studentski-fokus.rs/contributors/'${article?.author.slug}`,
               ],
               tags: [`${article?.categories.map((cat) => cat.title)}`],
             },
@@ -83,6 +84,10 @@ function ArticlePage({
                 }
               ),
             }),
+          }}
+          twitter={{
+            site: '@studentskifokus',
+            cardType: 'summary_large_image'
           }}
         />
         <ArticleJsonLd

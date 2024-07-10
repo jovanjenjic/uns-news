@@ -4,7 +4,7 @@ import AuthorCard from './AuthorCard'
 import { Date } from '@components/ui/Date'
 import ActionButtons from './ActionButtons'
 import { getMediaURL } from '@lib/api'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import { useRouter } from 'next/router'
 import { Button } from '@components/ui/Button'
 import ArrowLeft from '@components/icons/ArrowLeft'
@@ -76,9 +76,9 @@ function Article({ article }: { article: TArticle | undefined }) {
                 article?.cover?.formats?.medium?.url || article?.cover?.url
               )}
               alt={article.cover.alternativeText || ''}
+              className="object-cover"
               width={1920}
               height={1080}
-              objectFit="cover"
             />
           )}
         </div>

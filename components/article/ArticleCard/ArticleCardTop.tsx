@@ -2,7 +2,7 @@ import { Date } from '@components/ui/Date'
 import Link from 'next/link'
 import s from './ArticleCard.module.css'
 import cn from 'classnames'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import { getMediaURL } from '@lib/api'
 
 type Props = {
@@ -27,8 +27,9 @@ const ArticleCardTop = ({ article, index }: Props) => {
                 )}
                 alt={article.cover.alternativeText || ''}
                 className="object-cover"
-                width={256}
-                height={256}
+                style={{aspectRatio: '1'}}
+                width={720}
+                height={720}
               />
             )}
           </a>
