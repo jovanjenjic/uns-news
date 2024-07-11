@@ -5,6 +5,7 @@ import { Footer } from '../Footer'
 import { Header } from '../Header'
 import { Nav } from '../Nav'
 import cn from 'classnames'
+import { useIsMobile } from '@lib/hooks/use-media-queries'
 
 type Props = {
   children: React.ReactNode
@@ -15,6 +16,7 @@ type Props = {
 const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
   const { isOffline } = useIsOffline()
   const { addToast } = useToast()
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     if (isOffline) {
@@ -24,15 +26,10 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
 
   return (
     <>
-      <Header />
-      {navigation && (
-        <Nav
-          list={navigation.faculties}
-          isFaculty={true}
-          allText="СВИ ФАКУЛТЕТИ"
-        />
-      )}
-      {navigation && (
+      <Header
+        menuList={navigation ? navigation.categories : []}
+      />
+      {navigation && !isMobile && (
         <Nav
           list={navigation.categories}
           isFaculty={false}
@@ -41,7 +38,7 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
       )}
       <main
         className={cn(
-          'min-h-screen px-3 pt-40 pb-20 flex flex-col mx-auto w-full  md:px-8 lg:px-12 xl:px-16 2xl:px-20',
+          'min-h-screen px-3 pt-28 sm:pt-40 pb-20 flex flex-col mx-auto w-full  md:px-8 lg:px-12 xl:px-16 2xl:px-20',
           isMarkdown ? 'max-w-screen-lg' : 'max-w-screen-2xl'
         )}
       >

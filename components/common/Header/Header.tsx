@@ -14,13 +14,17 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
-// import HamburgerMenu from '@components/hamburger/Hamburger'
+import HamburgerMenu from '@components/hamburger/Hamburger'
 
-const Header = () => {
+const Header = ({
+  menuList,
+}: {
+  menuList: TCategory[]
+}) => {
   const router = useRouter()
   const [showSearch, setShowSearch] = useState(false)
   const isMobile = useIsMobile()
-
+  
   const searchRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -38,7 +42,7 @@ const Header = () => {
 
   return (
     <>
-      {/* <HamburgerMenu /> */}
+      {isMobile && <HamburgerMenu menuList={menuList} />}
       <header
         ref={searchRef}
         className="bg-blue-primary text-white-primary fixed h-20 top-0 left-0 right-0 px-4 flex justify-between items-center z-20 "
