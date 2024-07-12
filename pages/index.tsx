@@ -32,22 +32,18 @@ function Home({
   const featuredArticles = resolveFeaturedArticles(articles)
   const popularArticles = resolvePopularArticles(articles)
   const mainArticle = articles.find((article) => article.main) || articles?.[0]
-  
+
   return (
     <div>
       <Layout navigation={navigation}>
-      <NextSeo
-          canonical={SITE_URL}
-      />
+        <NextSeo canonical={SITE_URL} />
         <BreadcrumbJsonLd
-          itemListElements={
-            category.map((categoryItem, index) => ({
-                "@type": "ListItem",
-                "position": index + 1,
-                "name": categoryItem.title,
-                "item": `${SITE_URL}/${categoryItem.slug}`
-              }
-          ))}
+          itemListElements={category.map((categoryItem, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: categoryItem.title,
+            item: `${SITE_URL}/${categoryItem.slug}`,
+          }))}
         />
         {isTablet ? (
           //Tablet and smaller devices
@@ -58,7 +54,7 @@ function Home({
             mainArticle={mainArticle}
           />
         )}
-  
+
         <ArticlesList articles={articles.slice(4, 10)} title="НАЈНОВИЈЕ" />
 
         <div className="lg:py-24 lg:flex lg:w-full lg:gap-28 lg:mx-auto">

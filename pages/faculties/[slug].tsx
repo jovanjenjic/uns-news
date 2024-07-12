@@ -48,7 +48,6 @@ function FacultyPage({
 
   const fullURL = `${SITE_URL}/faculties/${faculty?.slug}`
 
-
   const handleGoBack = () => {
     back()
   }
@@ -60,7 +59,7 @@ function FacultyPage({
   return (
     <div>
       <Layout navigation={navigation}>
-      <NextSeo
+        <NextSeo
           title={faculty?.title}
           description={faculty?.description}
           canonical={fullURL}
@@ -72,9 +71,7 @@ function FacultyPage({
             article: {
               publishedTime: faculty?.published_at as string,
               modifiedTime: faculty?.updated_at as string,
-              authors: [
-                `Уредник`,
-              ],
+              authors: [`Уредник`],
             },
             // Only include OG image if exists
             // This will break disabling Strapi Image Optimization
@@ -92,7 +89,7 @@ function FacultyPage({
           }}
           twitter={{
             site: '@studentskifokus',
-            cardType: 'summary_large_image'
+            cardType: 'summary_large_image',
           }}
         />
         <ArticleJsonLd
@@ -125,7 +122,7 @@ function FacultyPage({
               alt={`${faculty?.title} profile`}
               width={1920}
               height={1080}
-              style={{aspectRatio: '21/9'}}
+              style={{ aspectRatio: '21/9' }}
             />
           </figure>
           <h1 className="serif mt-0 text-2xl">{faculty?.title}</h1>

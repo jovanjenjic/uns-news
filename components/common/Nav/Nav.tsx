@@ -36,10 +36,10 @@ const Nav = ({
     //     ? `${val}/${slug || ''}`
     //     : val
     // } else {
-      // url =
-      //   !findElementInCurrentList(slug as string) && slug
-      //     ? `${slug}/${val}`
-      //     : val
+    // url =
+    //   !findElementInCurrentList(slug as string) && slug
+    //     ? `${slug}/${val}`
+    //     : val
     // }
 
     // Delete this line if feature above is enabled
@@ -56,7 +56,7 @@ const Nav = ({
         isFaculty ? 'hidden' : 'top-20',
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
-      style={{scrollbarWidth: 'none'}}
+      style={{ scrollbarWidth: 'none' }}
     >
       <Link href={navigateOnNewPage('')}>
         <p
