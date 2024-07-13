@@ -26,9 +26,7 @@ const Layout = ({ children, navigation, isMarkdown = false }: Props) => {
 
   return (
     <>
-      <Header
-        menuList={navigation ? navigation.categories : []}
-      />
+      <Header menuList={navigation ? navigation.categories : []} />
       {navigation && !isMobile && (
         <Nav
           list={navigation.categories}

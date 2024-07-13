@@ -27,7 +27,7 @@ const ArticleCardTop = ({ article, index }: Props) => {
                 )}
                 alt={article.cover.alternativeText || ''}
                 className="object-cover"
-                style={{aspectRatio: '1'}}
+                style={{ aspectRatio: '1' }}
                 width={720}
                 height={720}
               />

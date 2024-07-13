@@ -16,15 +16,11 @@ import {
 } from 'body-scroll-lock'
 import HamburgerMenu from '@components/hamburger/Hamburger'
 
-const Header = ({
-  menuList,
-}: {
-  menuList: TCategory[]
-}) => {
+const Header = ({ menuList }: { menuList: TCategory[] }) => {
   const router = useRouter()
   const [showSearch, setShowSearch] = useState(false)
   const isMobile = useIsMobile()
-  
+
   const searchRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

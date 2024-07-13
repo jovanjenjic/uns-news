@@ -67,27 +67,26 @@ const styles = {
   },
 }
 
-const Hamburger = ({
-  menuList,
-}: {
-  menuList: TCategory[]
-}) => {
+const Hamburger = ({ menuList }: { menuList: TCategory[] }) => {
   return (
     <Menu
-      customBurgerIcon={ <Burger className={style.burgerIcon} /> }
-      burgerButtonClassName={ "rounded-full hover:bg-primary-20" }
-      crossButtonClassName={ "rounded-full hover:bg-primary-20" }
-      customCrossIcon={ <BurgerClose className={style.crossIcon} /> }
+      customBurgerIcon={<Burger className={style.burgerIcon} />}
+      burgerButtonClassName={'rounded-full hover:bg-primary-20'}
+      crossButtonClassName={'rounded-full hover:bg-primary-20'}
+      customCrossIcon={<BurgerClose className={style.crossIcon} />}
       styles={styles}
-      >
+    >
       <Link href={`/`}>
         <a id="pocetna" className="menu-item hover:text-accent">
           Почетна
         </a>
       </Link>
-      {menuList.map(menuItem => (
+      {menuList.map((menuItem) => (
         <Link key={menuItem?.id} href={`/${menuItem.slug}`}>
-          <a id={menuItem?.id.toString()} className="menu-item hover:text-accent">
+          <a
+            id={menuItem?.id.toString()}
+            className="menu-item hover:text-accent"
+          >
             {menuItem?.title}
           </a>
         </Link>

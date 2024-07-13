@@ -87,7 +87,7 @@ function ArticlePage({
           }}
           twitter={{
             site: '@studentskifokus',
-            cardType: 'summary_large_image'
+            cardType: 'summary_large_image',
           }}
         />
         <ArticleJsonLd
