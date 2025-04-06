@@ -67,7 +67,7 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
             <a className="hover:underline">{article.author.name}</a>
           </Link>
         </div>
-        <Date date={article.published_at as string} />
+        <Date date={article?.createdDate as string} />
       </section>
 
       <ActionButtons article={article} />

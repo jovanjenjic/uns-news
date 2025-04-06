@@ -63,8 +63,8 @@ function ArticlePage({
             url: fullURL,
             type: 'article',
             article: {
-              publishedTime: article?.published_at as string,
-              modifiedTime: article?.updated_at as string,
+              publishedTime: article?.createdDate as string,
+              modifiedTime: article?.createdDate as string,
               section: `${article?.categories.map((cat) => cat.title)}`,
               authors: [
                 `'https://www.studentski-fokus.rs/contributors/'${article?.author.slug}`,
@@ -93,8 +93,8 @@ function ArticlePage({
         <ArticleJsonLd
           url={fullURL}
           title={article?.title as string}
-          datePublished={article?.published_at as string}
-          dateModified={article?.updated_at as string}
+          datePublished={article?.createdDate as string}
+          dateModified={article?.createdDate as string}
           authorName={[article?.author.name as string]}
           publisherName={SITE_NAME}
           publisherLogo={SITE_LOGO}

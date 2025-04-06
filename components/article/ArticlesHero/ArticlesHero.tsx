@@ -96,7 +96,7 @@ const ArticlesHero = ({
                 {' | '}
                 <Date
                   className="px-2"
-                  date={mainArticle?.published_at as string}
+                  date={mainArticle?.createdDate as string}
                   style={{ lineHeight: `unset` }}
                 />
               </div>

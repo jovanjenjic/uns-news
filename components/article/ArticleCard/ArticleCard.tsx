@@ -84,7 +84,7 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
         </div>
         <Date
           className="leading-3 mt-2"
-          date={article.published_at as string}
+          date={article?.createdDate as string}
         />
       </section>
     </article>

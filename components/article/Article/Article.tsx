@@ -63,7 +63,7 @@ function Article({ article }: { article: TArticle | undefined }) {
               <a className="font-bold">{article.author.name}</a>
             </Link>
           </p>
-          <Date date={article.published_at as string} />
+          <Date date={article?.createdDate as string} />
         </div>
 
         <div

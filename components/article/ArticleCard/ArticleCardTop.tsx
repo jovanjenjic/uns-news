@@ -43,7 +43,7 @@ const ArticleCardTop = ({ article, index }: Props) => {
             </a>
           </Link>
           <span className="mx-1 font-normal">|</span>
-          <Date date={article.published_at as string} className="leading-3" />
+          <Date date={article?.createdDate as string} className="leading-3" />
         </div>
         <Link href={`/articles/${article.slug}`}>
           <a>
