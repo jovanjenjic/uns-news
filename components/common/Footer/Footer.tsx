@@ -4,6 +4,7 @@ import ThemeSwitch from '../ThemeSwitch'
 import s from './Footer.module.css'
 import { SOCIAL_USERNAMES } from '@lib/constants'
 import React from 'react'
+import SupportLogos from './SupportLogos'
 
 const { instagram } = SOCIAL_USERNAMES
 
@@ -63,9 +64,16 @@ const Footer = ({ navigation }: Props) => {
         </div>
       </nav>
 
-      <SocialUrls />
+      <div className="flex flex-col  mt-6 mb-6 flex-wrap md:flex-row md:justify-between">
+        <div className='w-36'></div>
 
-      <ThemeSwitch />
+        <div>
+          <SocialUrls />
+          <ThemeSwitch />
+        </div>
+
+        <SupportLogos />
+      </div>
     </footer>
   )
 }

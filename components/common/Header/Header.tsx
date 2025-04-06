@@ -50,8 +50,8 @@ const Header = ({ menuList }: { menuList: TCategory[] }) => {
               className="cursor-pointer object-contain"
               src="/img/Logo.png"
               alt="logo"
-              width={190}
-              height={52}
+              width={170}
+              height={42}
             />
           </Link>
         </div>

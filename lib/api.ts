@@ -1,7 +1,9 @@
+// export function getStrapiURL(path: string) {
+//   return `${'http://127.0.0.1:1337'}${path}`
+// }
+
 export function getStrapiURL(path: string) {
-  return `${
-    'https://strapi-uns-news.onrender.com' || 'http://localhost:1337'
-  }${path}`
+  return `${'https://uns-news-api.onrender.com'}${path}`
 }
 
 // Helper to make GET requests to Strapi
@@ -11,7 +13,6 @@ export async function fetchAPI(path: string) {
   const data = await response.json()
   return data
 }
-
 export const getMediaURL = (url?: string) => {
   if (!url) return ' '
   // Return the full url when it's external
