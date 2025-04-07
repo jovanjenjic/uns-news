@@ -6,7 +6,12 @@ const SupportLogos = () => {
       <div className="flex flex-col justify-center">
         <b className="mb-2">Пројекат суфинансиран од</b>
         <div className="flex justify-center">
-          <Image src="/img/MtoVertical.png" alt="MTO Logo" width={160} height={200} />
+          <Image
+            src="/img/MtoVertical.png"
+            alt="MTO Logo"
+            width={160}
+            height={200}
+          />
         </div>
       </div>
     </div>

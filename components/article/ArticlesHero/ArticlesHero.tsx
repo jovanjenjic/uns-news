@@ -86,20 +86,22 @@ const ArticlesHero = ({
                   </h2>
                 </a>
               </Link>
-              <div className="flex text-sm">
-                Аутор
-                <Link href={`/contributors/${mainArticle?.author.slug}`}>
-                  <a className="pl-1 pr-2 font-bold hover:underline">
-                    {mainArticle?.author?.name}
-                  </a>
-                </Link>
-                {' | '}
-                <Date
-                  className="px-2"
-                  date={mainArticle?.createdDate as string}
-                  style={{ lineHeight: `unset` }}
-                />
-              </div>
+              {mainArticle?.author && (
+                <div className="flex text-sm">
+                  Аутор
+                  <Link href={`/contributors/${mainArticle?.author?.slug}`}>
+                    <a className="pl-1 pr-2 font-bold hover:underline">
+                      {mainArticle?.author?.name}
+                    </a>
+                  </Link>
+                  {' | '}
+                  <Date
+                    className="px-2"
+                    date={mainArticle?.createdDate as string}
+                    style={{ lineHeight: `unset` }}
+                  />
+                </div>
+              )}
             </section>
             <ActionButtons article={mainArticle} />
           </article>

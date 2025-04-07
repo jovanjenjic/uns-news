@@ -6,10 +6,10 @@ export const SITE_LOGO =
 
 export const SOCIAL_USERNAMES = {
   twitter: '',
-  instagram: 'studentskaunija.ftn/',
-  facebook: 'unijaftn',
+  instagram: '',
+  facebook: '',
   youtube: null,
-  linkedin: 'company/studentska-unija-fakulteta-tehničkih-nauka/about/',
+  linkedin: '',
 }
 
 // Default SEO

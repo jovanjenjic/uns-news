@@ -36,15 +36,17 @@ const ArticleCardTop = ({ article, index }: Props) => {
         </Link>
       </div>
       <section>
-        <div className="flex w-full text-xs leading-3">
-          <Link href={`/contributors/${article.author.slug}`}>
-            <a className="pl-0.5 font-semibold hover:underline">
-              {article.author.name}
-            </a>
-          </Link>
-          <span className="mx-1 font-normal">|</span>
-          <Date date={article?.createdDate as string} className="leading-3" />
-        </div>
+        {article.author && (
+          <div className="flex w-full text-xs leading-3">
+            <Link href={`/contributors/${article.author.slug}`}>
+              <a className="pl-0.5 font-semibold hover:underline">
+                {article.author.name}
+              </a>
+            </Link>
+            <span className="mx-1 font-normal">|</span>
+            <Date date={article?.createdDate as string} className="leading-3" />
+          </div>
+        )}
         <Link href={`/articles/${article.slug}`}>
           <a>
             <h3

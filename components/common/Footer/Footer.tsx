@@ -65,7 +65,7 @@ const Footer = ({ navigation }: Props) => {
       </nav>
 
       <div className="flex flex-col  mt-6 mb-6 flex-wrap md:flex-row md:justify-between">
-        <div className='w-36'></div>
+        <div className="w-36"></div>
 
         <div>
           <SocialUrls />

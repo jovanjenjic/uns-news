@@ -61,12 +61,14 @@ const ArticleCardList = ({ article }: { article: TArticle }) => {
             </h3>
           </a>
         </Link>
-        <div className="serif text-s">
-          Аутор{' '}
-          <Link href={`/contributors/${article.author.slug}`}>
-            <a className="hover:underline">{article.author.name}</a>
-          </Link>
-        </div>
+        {article.author && (
+          <div className="serif text-s">
+            Аутор{' '}
+            <Link href={`/contributors/${article.author.slug}`}>
+              <a className="hover:underline">{article.author.name}</a>
+            </Link>
+          </div>
+        )}
         <Date date={article?.createdDate as string} />
       </section>
 

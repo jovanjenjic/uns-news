@@ -18,7 +18,13 @@ module.exports = (phase) => {
     return {
       /* Localhost on development for next/image component */
       images: {
-        domains: ['localhost', '127.0.0.1', 'res.cloudinary.com', 'example.com', 'https://uns-news-api.onrender.com'],
+        domains: [
+          'localhost',
+          '127.0.0.1',
+          'res.cloudinary.com',
+          'example.com',
+          'https://uns-news-api.onrender.com',
+        ],
       },
     }
   }

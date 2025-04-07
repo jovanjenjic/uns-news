@@ -56,15 +56,17 @@ function Article({ article }: { article: TArticle | undefined }) {
 
         <h1 className="serif pb-2 text-3xl md:text-4xl">{article.title}</h1>
 
-        <div className="flex flex-1 flex-row justify-between pr-0.5">
-          <p className="pb-2">
-            Аутор{' '}
-            <Link href={`/contributors/${article.author.slug}`}>
-              <a className="font-bold">{article.author.name}</a>
-            </Link>
-          </p>
-          <Date date={article?.createdDate as string} />
-        </div>
+        {article.author && (
+          <div className="flex flex-1 flex-row justify-between pr-0.5">
+            <p className="pb-2">
+              Аутор{' '}
+              <Link href={`/contributors/${article.author.slug}`}>
+                <a className="font-bold">{article.author.name}</a>
+              </Link>
+            </p>
+            <Date date={article?.createdDate as string} />
+          </div>
+        )}
 
         <div
           className="flex my-4"

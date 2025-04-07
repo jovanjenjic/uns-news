@@ -76,12 +76,14 @@ const ArticleCard = ({ article, variant = 'default' }: Props) => {
             </h3>
           </a>
         </Link>
-        <div className="text-sm leading-3 mt-2">
-          Аутор{' '}
-          <Link href={`/contributors/${article.author.slug}`}>
-            <a className="font-bold hover:underline">{article.author.name}</a>
-          </Link>
-        </div>
+        {article.author && (
+          <div className="text-sm leading-3 mt-2">
+            Аутор{' '}
+            <Link href={`/contributors/${article.author.slug}`}>
+              <a className="font-bold hover:underline">{article.author.name}</a>
+            </Link>
+          </div>
+        )}
         <Date
           className="leading-3 mt-2"
           date={article?.createdDate as string}

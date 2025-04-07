@@ -67,7 +67,9 @@ function ArticlePage({
               modifiedTime: article?.createdDate as string,
               section: `${article?.categories.map((cat) => cat.title)}`,
               authors: [
-                `'https://www.studentski-fokus.rs/contributors/'${article?.author.slug}`,
+                `'https://www.studentski-fokus.rs/contributors/'${
+                  article?.author?.slug || ''
+                }`,
               ],
               tags: [`${article?.categories.map((cat) => cat.title)}`],
             },
@@ -95,7 +97,7 @@ function ArticlePage({
           title={article?.title as string}
           datePublished={article?.createdDate as string}
           dateModified={article?.createdDate as string}
-          authorName={[article?.author.name as string]}
+          authorName={[article?.author?.name || ('' as string)]}
           publisherName={SITE_NAME}
           publisherLogo={SITE_LOGO}
           description={article?.description as string}
