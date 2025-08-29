@@ -23,7 +23,7 @@ module.exports = (phase) => {
           '127.0.0.1',
           'res.cloudinary.com',
           'example.com',
-          'https://uns-news-api.onrender.com',
+          'https://uns-news-api-81d6.onrender.com',
         ],
       },
     }

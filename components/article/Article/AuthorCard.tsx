@@ -5,8 +5,10 @@ import Image from 'next/image'
 
 function AuthorCard({ author }: { author: TContributor }) {
   const thumbnailUrl = getMediaURL(
-    author.featured?.profile_image?.formats?.thumbnail?.url
+    author.featured?.profile_image?.formats?.thumbnail?.url || author.featured?.profile_image?.url
   )
+
+  console.log("UsaoSamOvde-002",  author.featured);
 
   return (
     <div className="flex py-2 items-center">
